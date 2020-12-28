@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-may-2020 12:36:04 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Anuncio" table="anuncio" catalog="piggy_cash" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="patrocinador" class="pojos.Patrocinador" fetch="join" lazy="false">
+            <column name="cif_patrocinador" length="9" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" length="32" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" not-null="true" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="124" not-null="true" />
+        </property>
+        <property name="contenidoMultimedia" type="string">
+            <column name="contenido_multimedia" length="64" />
+        </property>
+        <property name="cuantia" type="float">
+            <column name="cuantia" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
