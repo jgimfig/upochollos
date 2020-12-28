@@ -1,0 +1,57 @@
+@import "estiloNoticia.css";
+
+#divisorPagina{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#divisorPagina section{
+    flex: 2 1 auto;
+    align-self: auto;
+}
+
+#divisorPagina aside{
+    background-color: white;
+    margin-right: 2em;
+    margin-top:  2em;  
+    padding: 0.7em;
+    text-align: center;
+}
+
+#divisorPagina aside h3{
+    text-align: center;
+}
+
+
+#divisorPagina aside p{
+    text-align: left;
+}
+
+#divisorPagina aside figure img{
+    width: 10em;
+}
+
+.publicidad {
+    border-bottom: 0.12em solid gray;
+    border-collapse: collapse;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.grupoBotones{
+    display: flex;
+    flex-direction: row;
+}
+
+.grupoBotones button{
+    margin-left: 1em;
+    margin-right: 1em;
+}

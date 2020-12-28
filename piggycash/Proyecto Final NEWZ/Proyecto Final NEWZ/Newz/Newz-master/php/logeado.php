@@ -1,0 +1,15 @@
+<?php
+include_once 'funciones.php';
+
+/*
+    ESTE ARCHIVO ES LLAMADO EN VARIAS PAGINAS DONDE SE NECESITA QUE EL USUARIO
+    HAYA INICIADO SESIÓN PARA CONTINUAR.
+  
+    DESDE AQUÍ SE REALIZA LA COMPROBACIÓN. SI EL USUARIO NO TIENE UNA SESIÓN INICIADA
+    SE LO REDIRIGIRÁ A LA VENTANA DE LOGIN
+ */
+
+if(!comprobarLogin()){
+    header('location: login.php');
+}
+?>

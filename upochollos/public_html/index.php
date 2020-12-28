@@ -1,12 +1,12 @@
 <?php
 // FUNCIONES COMUNES A TODO EL PROYECTO
-include_once 'funciones.php';
+include_once './php/funciones.php';
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Newz</title>
+        <title>UpoChollos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,17 +17,17 @@ include_once 'funciones.php';
         <link rel="stylesheet" type="text/css" href="./css/estiloComunidad.css">
 
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
-        <?php include './libreriasJS.php'; ?>
+        <?php/* include './libreriasJS.php'; */?>
 
         <!--FUNCIONES E INTERACCIONES JS ESPECÍFICAS DE COMUNIDAD-->
-        <script type="text/javascript" src="../js/redactarNoticia.js"></script>
-        <script type="text/javascript" src="../js/cargarNoticias.js"></script>
+        <!--<script type="text/javascript" src="../js/redactarNoticia.js"></script>
+        <script type="text/javascript" src="../js/cargarNoticias.js"></script>-->
     </head>
     <body>
 
         <?php
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
-        include './header.php';
+        include './php/header.php';
         ?>
 
         <!-- DIVISOR PRINCIPAL: Divide contenido prncipal y publicidad -->
@@ -36,19 +36,19 @@ include_once 'funciones.php';
                 <h2>Comunidad</h2>
                 <?php
                 //SI EL USUARIO ESTÁ LOGEADO SE LE PERMITE ESCRIBIR NOTICIAS
-                if (comprobarLogin()) {
+                /*if (comprobarLogin()) {
                     ?>
                     <article>
                         <textarea id="escribirNoticia" class="noticia" placeholder="Escribe una nueva noticia..." onfocus="redactar(event)"></textarea>
                     </article>   
                     <?php
-                }
+                }*/
                 ?>
                 <?php
                 //CARGAMOS LAS PRIMERAS 5 NOTICIAS
-                $noticias = getNoticiasComunidad(0, 5);
+                /*$noticias = getNoticiasComunidad(0, 5);*/
 
-                $nombreUsuario = getNombreUsuario();
+                /*$nombreUsuario = getNombreUsuario();
 
                 $logeado = strlen($nombreUsuario) > 0;
 
@@ -111,7 +111,7 @@ include_once 'funciones.php';
                         echo "<img id='imgBotonGuardar_$id' src='../img/iconos/iconoGuardar.svg' alt='guardar noticia'/>";
                         echo "</button>";
                     }
-
+                    
                     // TANTO SI ESTÁ LOGEADO COMO SI NO, SE PERMITIRÁ COMPARTIR LA NOTICIA
                     echo "<button id='botonCompartir_$id' type='button' name='botonCompatir' value='compartir' class='boton' title='Compartir' onclick='compartirNoticia(event)'> ";
                     echo "<img id='imgBotonCompartir_$id' src='../img/iconos/iconoCompartir.svg' alt='compartir'/>";
@@ -141,7 +141,7 @@ include_once 'funciones.php';
                     echo "<img src='' alt=''/>";
                     echo "</figure>";
                     echo "</article> ";
-                }
+                }*/
                 ?> 
 
                 <!--MEDIANTE JAVASCRIPT SE IRÁN CARGANDO LAS NOTICIAS PROGRESIVAMENTE -->
@@ -154,14 +154,14 @@ include_once 'funciones.php';
 
             <!--NCLUIMOS EL ASIDE CON LA PUBLICIDAD Y UN BOTÓN DE SUBIR A LA CABECERA -->
             <?php
-            include './aside.php';
-            include './subir.php';
+            include './php/aside.php';
+            include './php/subir.php';
             ?>
         </div>
 
         <?php
         //INCLUIMOS EL FOOTER
-        include './footer.php';
+        include './php/footer.php';
         ?>
     </body>
 
