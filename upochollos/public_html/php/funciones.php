@@ -4,7 +4,7 @@
 define("HOST", "localhost");
 define("USUARIO_BD", "root");
 define("CONTRASENA_BD", "");
-define("NOMBRE_BD", "newz_db");
+define("NOMBRE_BD", "upochollos");
 
 /*
  * FUNCIÓN: consulta()
@@ -13,7 +13,7 @@ define("NOMBRE_BD", "newz_db");
  *   - Devuelve un array con los resultados o booleano según el tipo de clausula urilizada
  */
 
-/*function consulta($consulta) {
+function consulta($consulta) {
 
     $con = mysqli_connect(HOST, USUARIO_BD, CONTRASENA_BD, NOMBRE_BD);
 
@@ -34,7 +34,7 @@ define("NOMBRE_BD", "newz_db");
         mysqli_close($con);
     }
     return false;
-}*/
+}
 
 /*
  * FUNCIÓN: registrarUsuario()
@@ -61,7 +61,7 @@ function registrarUsuario($usuario, $passwd, $email, $tipo) {
  *   - Devuelve un booleano que indica si el usuario ha podido iniciado sesión
  */
 
-/*function comprobarLogin($usuario = "", $passwd = "") {
+function comprobarLogin($usuario = "", $passwd = "") {
 
     if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
@@ -85,7 +85,7 @@ function registrarUsuario($usuario, $passwd, $email, $tipo) {
         }
     }
     return false;
-}*/
+}
 
 /*
  * FUNCIÓN: getNombreUsuario()
@@ -94,7 +94,7 @@ function registrarUsuario($usuario, $passwd, $email, $tipo) {
  *   - Devuelve en un string el nombre de usuario almacenado en la sesión
  */
 
-/*function getNombreUsuario() {
+function getNombreUsuario() {
 
     if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
@@ -105,7 +105,7 @@ function registrarUsuario($usuario, $passwd, $email, $tipo) {
     }
 
     return "";
-}*/
+}
 
 /*
  * FUNCIÓN: getFechaRegistroUsuario()
@@ -348,11 +348,11 @@ function getCategoriasNoInteresadoUsuario() {
  *   - Hace una consulta a la base de datos para obtener todos los datos de los
  *     anuncios vigentes.
  *   - Devuelve un array multidimensional con los datos de los anuncios 
- 
+ */
 
 function getAnuncios() {
     return consulta("SELECT titulo, descripcion, contenido_multimedia, fecha_inicio FROM anuncio WHERE fecha_inicio <= CURRENT_DATE AND ( fecha_fin IS NULL OR CURRENT_DATE <= fecha_fin ) ORDER BY anuncio.cuantia DESC");
-}*/
+}
 
 /*
  * FUNCIÓN: getContenidoMultimediaAnuncio()
@@ -562,7 +562,7 @@ function getNoticiasUsuario($tematica, $maxNoticias) {
  *   - Devuelve un array multidimensional con las noticias que cumplan ese criterio
  */
 
-/*
+
 function getNoticiasComunidad($noticiaInicio, $numNoticias) {
     $consulta = consulta("SELECT * FROM noticia ORDER BY fecha_publicacion DESC LIMIT $noticiaInicio, $numNoticias");
 
@@ -573,7 +573,7 @@ function getNoticiasComunidad($noticiaInicio, $numNoticias) {
 
     return $noticias;
 }
-*/
+
 
 /*
  *  FUNCIÓN: getURLAutor()
