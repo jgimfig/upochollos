@@ -1,0 +1,142 @@
+@import "estiloPagina.css";
+
+#perfilZonaSuperior{
+    display: flex;
+    flex-direction: row;
+    margin: 1.5em;
+}
+
+#datosUsuario{
+    display: flex;
+    flex-direction: row;
+    flex: 0 1 auto;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#imgPerfil figure{
+    margin: 2em;
+    padding: 0;
+}
+
+#imgPerfil img{
+    width: 8em;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+#nombreYFechaUsuario{
+    margin-top: 2.9em;
+}
+
+#nombreYFechaUsuario p{
+    margin: 0.2em;
+    text-align: center;
+}
+
+#nombreUsuario{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#ajustes figure{
+    margin: 2em;
+    padding: 0;
+}
+
+#ajustes img{
+    width: 2.5em;
+    margin: 0;
+    padding: 0;
+}
+
+#estadisticas{
+    flex: 1 1 auto;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 2em;
+}
+
+#estadisticas h2, #estadisticas h3, #estadisticas p{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+#estadisticas h2{
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+#conjuntoEstadisticas{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.datoEstadistica{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.etabs { 
+    margin: 0; 
+    padding: 0; 
+    margin-bottom: 1em;
+    margin-top: 4em;
+}
+
+.tab { 
+    margin-left: 1.5em;
+    display: inline-block;
+    *display:inline;
+    border-radius: 40px; 
+}
+
+.tab a { 
+    font-size: 1.3em;
+    line-height: 3em;
+    display: block;
+    padding: 0 1em;
+    outline: none;
+    text-decoration: none;
+    color: black;
+    border-radius: 40px; 
+}
+
+.tab a:hover { 
+    background:  linear-gradient(90deg, rgba(33,112,189,0.7) 0%, rgba(46,165,232,0.7) 50%, rgba(7,223,199,0.7) 100%);
+    color: white;
+    border-radius: 40px; 
+}
+
+.tab.active {  
+    background:  linear-gradient(90deg, rgba(33,112,189,0.7) 0%, rgba(46,165,232,0.7) 50%, rgba(7,223,199,0.7) 100%);
+}
+
+.tab a.active { 
+    font-weight: bold; 
+    color: white;
+}
+
+#tab-container { 
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+#tab-container #cargarNoticias figure{
+    width: 100%;
+}
+
+#tab-container #cargarNoticias figure img{
+    margin-left: 50%;
+    width: 15em;
+}
+
+.enlaceNoticia{
+    margin: 2em;
+    margin-top: 1em;
+    padding: 0.5em;
+    color: #168eea;
+}
+
