@@ -36,17 +36,17 @@ include_once './php/funciones.php';
                 <h2>Comunidad</h2>
                 <?php
                 //SI EL USUARIO ESTÁ LOGEADO SE LE PERMITE ESCRIBIR NOTICIAS
-                /*if (comprobarLogin()) {
+                if (comprobarLogin()) {
                     ?>
                     <article>
                         <textarea id="escribirNoticia" class="noticia" placeholder="Escribe una nueva noticia..." onfocus="redactar(event)"></textarea>
                     </article>   
                     <?php
-                }*/
+                }
                 ?>
                 <?php
                 //CARGAMOS LAS PRIMERAS 5 NOTICIAS
-                /*$noticias = getNoticiasComunidad(0, 5);*/
+                $noticias = getNoticiasComunidad(0, 5);
 
                 /*$nombreUsuario = getNombreUsuario();
 
