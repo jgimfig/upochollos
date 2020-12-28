@@ -1,0 +1,249 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <constant name="struts.ui.theme" value="simple" />
+    
+    <package name="default" extends="struts-default">
+        <action name="">
+            <result type="chain">
+                <param name="actionName">PaginaPrincipal</param>
+            </result>
+        </action>
+    </package>
+    
+    <package name="inicio" extends="struts-default">
+        <action name="PaginaPrincipal" class="acciones.CargarPagPrincipal">
+            <result>/Vistas/index.jsp</result>
+        </action>
+    </package>
+    
+    
+    <package name="navegacion" extends="struts-default">
+        
+        <action name="irA" class="acciones.IrAPagina">
+            <result name="chollos">/Vistas/index.jsp</result>
+            <result name="cupones">/Vistas/cupones.jsp</result>
+            <result name="cerrarSesion">/Vistas/login.jsp</result>
+            <result name="perfil">/Vistas/perfil.jsp</result>
+            <result name="iniciarSesion">/Vistas/login.jsp</result>
+            <result name="error">/Vistas/login.jsp</result>
+            <result name="adminCategorias">/Vistas/administracionCategorias.jsp</result>
+            <result name="adminTiendas">/Vistas/administracionTiendas.jsp</result>
+            <result name="adminCupones">/Vistas/administracionCupones.jsp</result>
+            <result name="adminAnuncios">/Vistas/administracionAnuncios.jsp</result>
+            <result name="registrar">/Vistas/registro.jsp</result>
+        </action>
+    </package>
+    
+    <package name="ajustesCuenta" extends="struts-default">
+        
+        <action name="actualizarCorreo" class="acciones.ActualizarCorreoAction">
+            <result name="success">/Vistas/login.jsp</result>
+            <result name="error">/Vistas/ajustes.jsp</result>
+            <result name="input">/Vistas/ajustes.jsp</result>
+        </action>
+        
+        <action name="actualizarContrasena" class="acciones.ActualizarContrasenaAction">
+            <result name="success">/Vistas/login.jsp</result>
+            <result name="error">/Vistas/ajustes.jsp</result>
+            <result name="input">/Vistas/ajustes.jsp</result>
+        </action>
+        
+        <action name="actualizarFoto" class="acciones.ActualizarFotoAction">
+            <result name="success">/Vistas/perfil.jsp</result>
+            <result name="error">/Vistas/ajustes.jsp</result>
+            <result name="input">/Vistas/ajustes.jsp</result>
+        </action>
+       
+        <action name="eliminarCuenta" class="acciones.EliminarCuentaAction">
+            <result name="success">/Vistas/index.jsp</result>
+        </action>
+   
+        
+    </package>
+    
+    <package name="registroLoginActions" extends="struts-default">
+        
+        <action name="registro" class="acciones.RegistroAction">
+            <result name="success">/Vistas/login.jsp</result>
+            <result name="error">/Vistas/registro.jsp</result>
+            <result name="input">/Vistas/registro.jsp</result>
+        </action>
+        
+        <action name="login" class="acciones.LoginAction">
+            <result name="success">/Vistas/index.jsp</result>
+            <result name="error">/Vistas/login.jsp</result>
+            <result name="input">/Vistas/login.jsp</result>
+        </action>
+    </package>
+    
+    <package name="comentarios" extends="struts-default">
+        
+        <action name="publicarComentario" class="acciones.CrearComentario">
+            <result name="success">/Vistas/chollo.jsp</result>
+            <result name="error">/Vistas/chollo.jsp</result>
+            <result name="input">/Vistas/chollo.jsp</result>
+        </action>
+        
+        <action name="eliminarComentario" class="acciones.EliminarComentario">
+            <result name="success">/Vistas/chollo.jsp</result>
+            <result name="error">/Vistas/chollo.jsp</result>
+        </action>
+        
+        
+        <action name="editarComentario" class="acciones.EditarComentario">
+            <result name="success">/Vistas/chollo.jsp</result>
+            <result name="error">/Vistas/chollo.jsp</result>
+        </action>
+        
+    </package>
+    
+    
+    <package name="ajaxAction" extends="struts-default">
+        
+        <action name="cargarCategoriasAction" class="acciones.CargarCategoriasAction">
+            <result name="success"> 
+                /Vistas/javascript/ajax/dataHandlerCategorias.jsp
+            </result>
+        </action>
+        
+        <action name="cargarTiendasAction" class="acciones.CargarTiendasAction">
+            <result name="success"> 
+                /Vistas/javascript/ajax/dataHandlerTiendas.jsp
+            </result>
+        </action>
+        
+        <action name="cargarChollos" class="acciones.CargarChollosAction">
+            <result name="success"> 
+                /Vistas/javascript/ajax/dataHandlerChollos.jsp
+            </result>
+        </action>
+        
+        <action name="cargarCupones" class="acciones.CargarCuponesAction">
+            <result name="success"> 
+                /Vistas/javascript/ajax/dataHandlerCupones.jsp
+            </result>
+        </action>
+        
+        <action name="cargarChollo" class="acciones.CargarCholloAction">
+            <result name="success"> 
+                /Vistas/chollo.jsp
+            </result>
+            
+            <result name="error"> 
+                /Vistas/index.jsp
+            </result>
+            
+        </action>
+        
+        <action name="crearPuntuacion" class="acciones.CrearPuntuacion">
+            <result name="success"> 
+                /Vistas/chollo.jsp
+            </result>
+            
+            <result name="error"> 
+                /Vistas/index.jsp
+            </result> 
+        </action>
+        
+        <action name="crearChollo" class="acciones.CrearChollo">
+            <result name="success"> 
+                /Vistas/index.jsp
+            </result>
+            
+            <result name="error"> 
+                /Vistas/perfil.jsp
+            </result> 
+            
+            
+            <result name="input"> 
+                /Vistas/perfil.jsp
+            </result> 
+            
+        </action>
+        
+        <action name="eliminarChollo" class="acciones.EliminarChollo">
+            <result name="success"> 
+                /Vistas/index.jsp
+            </result>
+            
+            <result name="error"> 
+                /Vistas/index.jsp
+            </result> 
+        </action>
+        
+        <action name="editarChollo" class="acciones.IrAEditarChollo">
+            <result name="success"> 
+                /Vistas/editarChollo.jsp
+            </result>
+            
+            <result name="error"> 
+                /Vistas/index.jsp
+            </result> 
+        </action>
+        
+        <action name="actualizarChollo" class="acciones.EditarChollo">
+            <result name="success"> 
+                /Vistas/index.jsp
+            </result>
+            
+            <result name="error"> 
+                /Vistas/editarChollo.jsp
+            </result> 
+        </action>
+    </package>
+    
+    <package name="administracion" extends="struts-default">
+        
+        <action name="eliminarCategorias" class="acciones.EliminarCategoria">
+            <result name="success"> /Vistas/administracionCategorias.jsp </result>
+        </action>
+        
+        <action name="crearCategorias" class="acciones.CrearCategoria">
+            <result name="success"> /Vistas/administracionCategorias.jsp </result>
+            <result name="input"> /Vistas/administracionCategorias.jsp </result>
+        </action>
+        
+        <action name="eliminarTiendas" class="acciones.EliminarTienda">
+            <result name="success"> /Vistas/administracionTiendas.jsp </result>
+        </action>
+        
+        <action name="crearTiendas" class="acciones.CrearTienda">
+                      
+            <result name="success"> /Vistas/administracionTiendas.jsp </result>
+            <result name="input"> /Vistas/administracionTiendas.jsp </result>
+            
+        </action>
+        
+        <action name="eliminarCupones" class="acciones.EliminarCupon">
+            <result name="success"> /Vistas/administracionCupones.jsp </result>
+        </action>
+        
+        <action name="crearCupones" class="acciones.CrearCupon">
+            <result name="success"> /Vistas/administracionCupones.jsp </result>
+            <result name="input"> /Vistas/administracionCupones.jsp </result>
+        </action>
+        
+        <action name="eliminarAnuncios" class="acciones.EliminarAnuncio">
+            <result name="success"> /Vistas/administracionAnuncios.jsp </result>
+        </action>
+        
+        <action name="crearAnuncios" class="acciones.CrearAnuncio">
+            <result name="success"> /Vistas/administracionAnuncios.jsp </result>
+            <result name="input"> /Vistas/administracionAnuncios.jsp </result>
+        </action>
+        
+        <action name="eliminarPatrocinadores" class="acciones.EliminarPatrocinador">
+            <result name="success"> /Vistas/administracionAnuncios.jsp </result>
+        </action>
+        
+        <action name="crearPatrocinadores" class="acciones.CrearPatrocinador">
+            <result name="success"> /Vistas/administracionAnuncios.jsp </result>
+            <result name="input"> /Vistas/administracionAnuncios.jsp </result>
+        </action>
+        
+    </package>
+    
+</struts>
