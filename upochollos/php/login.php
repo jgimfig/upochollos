@@ -22,7 +22,6 @@ if (isset($_POST['iniciarSesion'])) {
             $pass = filter_var($passwd, FILTER_SANITIZE_STRING);
 
             if (strlen($us) > 0 && strlen($pass) > 0 && $us !== false && $pass !== false) {
-
                 if (comprobarLogin($us, $pass)) { // SI EL LOGIN SE HACE CORRECTAMENTE
                     // ESTABLECEMOS UNA COOKIE QUE RECUERDE EL NOMBRE DE USUARIO
                     // SI SE MARCA LA OPCIÓN

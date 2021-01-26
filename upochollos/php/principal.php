@@ -16,6 +16,8 @@ include_once 'funciones.php';
         <!--ESTILOS PROPIOS DE COMUNIDAD-->
         <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">
         <link rel="stylesheet" type="text/css" href="../css/estiloPaginacion.css">
+        <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
+      
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include './libreriasJS.php'; ?>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  

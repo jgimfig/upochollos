@@ -5,8 +5,7 @@ include_once 'funciones.php';
 
 <header>
     <div id="cabecera">
-
-        <figure id="logo"><img src="../img/logo.png" alt="logo"/></figure>
+        <figure id="logo"><a href="principal.php"><img src="../img/logo.png" alt="logo"/></a></figure>
         
         <?php
         // Si el usuario ha iniciado sesión se mostrará su foto de perfil
@@ -19,13 +18,5 @@ include_once 'funciones.php';
             echo "<a href='../php/login.php'><figure id='sesion'><img src='../img/iconos/user.png' alt='icono de usuario'/></figure></a>";
         }
         ?>
-        
-
     </div>
 </header>
-<nav>
-    <ol>
-        <li><a href="chollos.php">Chollos</a></li>
-        <li><a href="cupones.php">Cupones</a></li>
-    </ol>
-</nav>
