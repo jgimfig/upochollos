@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-ene-2021, 0:41:11
+    Author     : User
+*/
+section {
+    height: 20%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 27% 61% 10%;
+  grid-template-rows: 10% 10% 50% 10%;
+  gap: 10px 10px;
+  grid-template-areas:
+    "fotoG titulo titulo"
+    "fotoG precio precio"
+    "fotoG descripcion descripcion"
+    "fotoG autor button";
+}
+
+.fotoG { grid-area: fotoG; }
+
+.titulo { grid-area: titulo; }
+
+.precio { grid-area: precio; }
+
+.descripcion { grid-area: descripcion; }
+
+.autor { grid-area: autor; }
+
+.button { grid-area: button; }
+
+.fotoGrid {
+    height: 100%;
+    width: 100%;
+}
+
+.button {
+  border: none;
+  color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.buttonC {background-color: orangered;}

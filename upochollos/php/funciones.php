@@ -130,3 +130,17 @@ function getURLImagenUsuario() {
     }
 }
 
+/*
+ * FUNCIÓN: registrarProducto()
+ *   - Recibe como parametros de entrada 
+ *   - Inserta un nuevo .
+ *   - Devuelve la URL de la foto de perfil del usuario
+ */
+
+function registrarProducto($nombre, $descripcion, $enlace, $precioOriginal,$precioDescuento, $fechaVencimiento, $tienda, $categoria,$imagen) {
+
+
+    $sql = "INSERT INTO `producto` (`id`, `enlace`, `precio_original`, `nombre`, `fecha_publicado`, `fecha_vencimiento`, `precio_descuento`, `descripcion`, `imagen`, `usuario`, `nombre_categoria`, `nombre_tienda`) VALUES (NULL, $enlace , $precioOriginal, $nombre, current_timestamp(), $fechaVencimiento, $precioDescuento, $descripcion, $imagen, getNombreUsuario(), $categoria, $tienda);";
+
+    return consulta($sql);
+}
