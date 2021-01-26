@@ -1,9 +1,64 @@
-
-img{
-    width: 50%;
-    text-align: center;
+body{
+    
 }
 
 td{
-    width: 200px;
+    width: 100px;
+    text-align: center;
+}
+
+main{
+    grid-template-areas: " gestion tiendas ";
+    display: grid;
+    grid-template-columns: 50%;
+    border-top: solid rgba(248,181,0,1) 1px;
+}
+
+header{
+    overflow: hidden;
+    background-color: white;
+    color: black;
+    width: 100%;
+    margin: 0%;
+    grid-area: header;
+}
+
+img{
+    width: 100%;
+}
+
+#gestion{
+    margin-top: 5%;
+    text-align: center;
+    grid-area: gestion;
+}
+
+#tiendas{
+    margin-top: 5%;
+    justify-content: center;
+    border-left: solid rgba(248,181,0,1) 1px;
+    grid-area: tiendas;
+    padding-left: 25%;
+}
+
+table{
+    justify-content: center;
+}
+
+.enviar{
+    background-color: rgba(248,181,0,1) ;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#crear{
+    width: 25%;
+}
+
+.input{
+    border-radius: 5px;
+}
+
+#imgEdit{
+    width: 20%;
 }

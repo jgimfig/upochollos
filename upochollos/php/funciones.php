@@ -93,6 +93,22 @@ function getNombreUsuario() {
     return "";
 }
 
+
+function getAdministrador() {
+
+    if (session_status() != PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+
+    if (comprobarLogin()) {
+        if($_SESSION['tipo']=="admin")
+            return true;
+        else
+            return false;
+    }
+    return false;
+}
+
 /*
  * FUNCIÓN: getURLImagenUsuario()
  *   - No recibe parámetro alguno

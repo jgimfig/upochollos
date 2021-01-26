@@ -15,6 +15,7 @@ include_once 'funciones.php';
         
         <!--ESTILOS PROPIOS DE COMUNIDAD-->
         <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">
+        <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
         
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include './libreriasJS.php'; ?>
