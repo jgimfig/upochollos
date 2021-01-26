@@ -69,11 +69,10 @@ function comprobarLogin($usuario = "", $passwd = "") {
     $resul = consulta($sql);
 
     if ($resul && count($resul) > 0) {
-        $pass = password_verify($passwd, $resul[0][1]);
-
+        $pass = password_verify($passwd, $resul[0][2]);
         if ($pass) {
             $_SESSION['usuario'] = $usuario;
-            $_SESSION['tipo'] = $resul[0][3];
+            $_SESSION['tipo'] = $resul[0][4];
             return true;
         }
     }
@@ -92,6 +91,22 @@ function getNombreUsuario() {
     }
 
     return "";
+}
+
+
+function getAdministrador() {
+
+    if (session_status() != PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+
+    if (comprobarLogin()) {
+        if($_SESSION['tipo']=="admin")
+            return true;
+        else
+            return false;
+    }
+    return false;
 }
 
 /*
