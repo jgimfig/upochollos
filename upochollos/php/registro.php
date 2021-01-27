@@ -26,7 +26,7 @@
             <figure><img src="../img/logo.png" alt='logo'/></figure>
             
             <!-- FORMULARIO DE REGISTRO DE USUARIO -->
-            <form action="crudProducto.php" method="POST" onsubmit="return comprobarRegistro()">
+            <form action="#" method="POST" onsubmit="return comprobarRegistro()">
                 
                 <!--TEXT FIELD DE NOMBRE DE USUARIO-->
                 <div class="inputLogin">
@@ -54,3 +54,43 @@
         </div>
     </body>
 </html>
+<!--Validación de registro en el servidor-->
+<?php
+include_once 'funciones.php'; // Funciones comunes a todo el proyecto
+
+if(isset($_POST['usuario']) && isset($_POST['contrasena']) && isset($_POST['email'])){
+    
+    $usuario = $_POST['usuario'];  // Nombre de usuario escogido
+    $passwd = $_POST['contrasena']; // Contraseña
+    $email = $_POST['email']; // Email proporcionado
+    
+    if(strlen($usuario) > 0 && strlen($passwd) > 0 && strlen($email) > 0){
+        
+        //Saneamiento de valores introducidos
+        $us = filter_var($usuario, FILTER_SANITIZE_STRING);
+        $pass = filter_var($passwd, FILTER_SANITIZE_STRING);
+        $em = filter_var($email, FILTER_SANITIZE_STRING);
+        
+        if(strlen($us) > 0 && $us !== false && strlen($pass) > 0 && $pass !== false && strlen($em) > 0 && $em !== false){
+            
+            //Validación del email
+            $em = filter_var($em, FILTER_VALIDATE_EMAIL);
+            
+            if(strlen($em) > 0 && $em !== false){
+                
+                /*
+                 * Si pudo efectuarse el registro, se enviará al usuario 
+                 * a la pagina de login
+                 */
+                if(registrarUsuario($us, $pass, $em, 'usuario_estandar')){ 
+                    header('location: login.php'); 
+                } else{
+                     echo " <script type='text/javascript'>"
+                    . "usuarioExiste();"
+                    . "</script>";
+                }
+            }
+        }
+    }
+}
+?>

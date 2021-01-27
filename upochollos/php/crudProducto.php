@@ -27,8 +27,10 @@ if (isset($_POST["btnCrear"])) {
     }
 }
 if (isset($_POST["btnBorrar"])) {
-    unlink('../img/fotos/' . getImagenProducto($_POST["id"]));
-    eliminarProducto($_POST["id"]);    
+    $nombreImagen = getImagenProducto($_POST['id']);
+    unlink('../img/fotos/'.$nombreImagen[0]);
+    eliminarProducto($_POST["id"]);
+    header('location: principal.php');
 }
 
 if (isset($_POST["btnModificar"])) {
@@ -41,20 +43,25 @@ if (isset($_POST["btnModificar"])) {
         if ($nombre !== false && $descripcion !== false && $enlace !== false) {
             $nombreImagen = basename($_FILES["imagenInput"]["name"]);
             $nombreImagenAntiguo = getImagenProducto($_POST['id']);
-            if (registrarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen)) {
-                if ($nombreImagen != $nombreImagenAntiguo) {     
-                    $target_dir = "../img/fotos/";
-                    unlink($target_dir.$nombreImagenAntiguo);
-                    $target_file = $target_dir . basename($_FILES["imagenInput"]["name"]);
-                    if (move_uploaded_file($_FILES['imagenInput']['tmp_name'], $target_file)) {
+            if ($nombreImagen == "") {//No cambiar foto
+                if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagenAntiguo[0],$_POST['id'])) {
+                    header('location: principal.php');
+                } else {
+                    echo " <script type='text/javascript'></script>";
+                }
+            } else if ($nombreImagen != $nombreImagenAntiguo) {//cambiar foto
+                $target_dir = "../img/fotos/";
+                unlink($target_dir . $nombreImagenAntiguo[0]);
+                $target_file = $target_dir . basename($_FILES["imagenInput"]["name"]);
+                if (!move_uploaded_file($_FILES['imagenInput']['tmp_name'], $target_file)) {
+                    echo "La imagen no se ha guardado correctamente.";
+                } else {
+                    if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen,$_POST['id'])) {
                         header('location: principal.php');
                     } else {
-                        echo "La imagen no se ha guardado correctamente.";
-                        $uploadOk = 0;
+                        echo " <script type='text/javascript'></script>";
                     }
                 }
-            } else {
-                echo " <script type='text/javascript'></script>";
             }
         }
     }
