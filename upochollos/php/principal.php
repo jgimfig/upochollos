@@ -50,7 +50,7 @@ include_once 'funciones.php';
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include './header.php';
         ?>
-
+        
         <!-- DIVISOR PRINCIPAL: Divide contenido prncipal y publicidad -->
         <div id="divisorPagina">
             <section>
@@ -70,8 +70,8 @@ include_once 'funciones.php';
 
             <!--NCLUIMOS EL ASIDE CON LA PUBLICIDAD Y UN BOTÓN DE SUBIR A LA CABECERA -->
             <?php
-            include './aside.php';
-            include './subir.php';
+//            include './aside.php';
+//            include './subir.php';
             ?>
         </div>
 
