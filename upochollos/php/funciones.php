@@ -69,17 +69,16 @@ function comprobarLogin($usuario = "", $passwd = "") {
     $resul = consulta($sql);
 
     if ($resul && count($resul) > 0) {
-        $pass = password_verify($passwd, $resul[0][1]);
+        $pass = password_verify($passwd, $resul[0][2]);
 
         if ($pass) {
             $_SESSION['usuario'] = $usuario;
-            $_SESSION['tipo'] = $resul[0][3];
+            $_SESSION['tipo'] = $resul[0][4];
             return true;
         }
     }
     return false;
 }
-
 
 function getNombreUsuario() {
 
@@ -118,14 +117,33 @@ function getURLImagenUsuario() {
 /*
  * FUNCIÓN: registrarProducto()
  *   - Recibe como parametros de entrada 
- *   - Inserta un nuevo .
- *   - Devuelve la URL de la foto de perfil del usuario
+ *   - Inserta un nuevo producto.
+ *   - Devuelve un boolean de si se ha instado correcctamente
  */
 
-function registrarProducto($nombre, $descripcion, $enlace, $precioOriginal,$precioDescuento, $fechaVencimiento, $tienda, $categoria,$imagen) {
+function registrarProducto($nombre, $descripcion, $enlace, $precioOriginal, $precioDescuento, $fechaVencimiento, $tienda, $categoria, $imagen) {
 
+    $sqlCorrecta = 'INSERT INTO `producto` (`id`, `enlace`, `precio_original`, `nombre`, `fecha_publicado`, `fecha_vencimiento`, `precio_descuento`, `descripcion`, `imagen`, `usuario`, `nombre_categoria`, `nombre_tienda`) VALUES (NULL, '.$enlace.' , '.$precioOriginal.', '.$nombre.', '.date('Y-m-d').', '.$fechaVencimiento.', '.$precioDescuento.', '.$descripcion.', '.$imagen.', '.getNombreUsuario().', '.$categoria.', '.$tienda.');';
 
-    $sql = "INSERT INTO `producto` (`id`, `enlace`, `precio_original`, `nombre`, `fecha_publicado`, `fecha_vencimiento`, `precio_descuento`, `descripcion`, `imagen`, `usuario`, `nombre_categoria`, `nombre_tienda`) VALUES (NULL, $enlace , $precioOriginal, $nombre, current_timestamp(), $fechaVencimiento, $precioDescuento, $descripcion, $imagen, getNombreUsuario(), $categoria, $tienda);";
+    $sql = 'INSERT INTO `producto` (`id`, `enlace`, `precio_original`, `nombre`, `fecha_publicado`, `fecha_vencimiento`, `precio_descuento`, `descripcion`, `imagen`, `usuario`, `nombre_categoria`, `nombre_tienda`) VALUES (NULL, "'.$enlace.'" , "'.$precioOriginal.'", "'.$nombre.'", "'.date('Y-m-d').'", "'.$fechaVencimiento.'", "'.$precioDescuento.'", "'.$descripcion.'", "'.$imagen.'","Patri", "'.$categoria.'", "'.$tienda.'");';
 
+    return consulta($sql);
+}
+
+function modificarProducto($nombre, $descripcion, $enlace, $precioOriginal, $precioDescuento, $fechaVencimiento, $tienda, $categoria, $imagen) {
+
+    $sql = 'UPDATE `producto` SET `enlace`="'.$enlace.'", `precio_original`="'.$precioOriginal.'", `nombre`="'.$nombre.'", `fecha_publicado`="'.date('Y-m-d').'", `fecha_vencimiento`="'.$fechaVencimiento
+            .'", `precio_descuento`="'.$precioDescuento.'", `descripcion`="'.$descripcion
+            .'", `imagen`="'.$imagen.'", `nombre_categoria`="'.$categoria.'", `nombre_tienda`="'.$tienda.' WHERE `id`='. $id;
+    return consulta($sql);
+}
+
+function eliminarProducto($id) {
+    $sql="";
+    return consulta($sql);
+}
+function getImagenProducto($id) {
+    $sql=consulta("SELECT imagen FROM `producto` WHERE `id`=" . $id);
+    
     return consulta($sql);
 }
