@@ -1,0 +1,133 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27-ene-2021, 16:34:38
+    Author     : User
+*/
+.grid-container {
+    height: 100%;
+    margin: 15px; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 10px 10px;
+    grid-template-areas:
+        "nombreDiv enlaceDiv descripcionDiv"
+        "precioOriginalDiv precioDescuentoDiv fechaVencimientoDiv"
+        "tiendaDiv categoriaDiv imagenDiv"
+        ". btnCrearDiv .";
+    text-align: center;
+}
+
+.nombreDiv { grid-area: nombreDiv; }
+
+.enlaceDiv { grid-area: enlaceDiv; }
+
+.descripcionDiv { grid-area: descripcionDiv; }
+
+.precioOriginalDiv { grid-area: precioOriginalDiv; }
+
+.precioDescuentoDiv { grid-area: precioDescuentoDiv; }
+
+.fechaVencimientoDiv { grid-area: fechaVencimientoDiv; }
+
+.tiendaDiv { grid-area: tiendaDiv; }
+
+.categoriaDiv { grid-area: categoriaDiv; }
+
+.imagenDiv { grid-area: imagenDiv; }
+
+.btnCrearDiv { grid-area: btnCrearDiv; }
+
+.ip {
+    border-radius: 25px;
+    border: 2px solid #ffcc00;
+    padding: 20px;
+}
+
+.ip2{
+    background-color: white;
+    border-radius: 25px;
+    border: 2px solid #ffcc00;
+    min-height:200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ip3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btnCrearProducto{
+    background-color: rgba(248,181,0,1) ;
+    border-radius: 5px;
+    width: 100%;
+    height: 20%;
+    color: white;
+    font-size: 15px;
+}
+
+
+/* Reset Select */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #ffcc00;
+    background-image: none;
+    font-size: 15px;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+/* Custom Select */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #FFB800;
+    overflow: hidden;
+    border-radius: .25em;
+}
+select {
+    flex: 1;
+    padding: 0 .5em;
+    color: #fff;
+    cursor: pointer;
+}
+/* Arrow */
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #FFB800;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+    color: #f39c12;
+}
+/* make it red instead (with with same width and style) */
+select:active, select:hover {
+    outline-color: red
+}

@@ -1,6 +1,12 @@
 <?php
-// FUNCIONES COMUNES A TODO EL PROYECTO
+// INLCUIMOS LAS FUNCIONES PHP COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
+
+if(isset($_GET['eliminar'])){
+    $query="delete from tienda where nombre='".$_GET['ntienda']."'";
+    echo $query;
+    consulta($query);
+}
 ?>
 <!DOCTYPE html>  
 <html>  
@@ -14,6 +20,7 @@ include_once 'funciones.php';
 
         <!--ESTILOS PROPIOS-->
          <link rel="stylesheet" type="text/css" href="../css/estiloPaginacion.css">
+         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include 'libreriasJS.php'; ?>
 
@@ -30,17 +37,17 @@ include_once 'funciones.php';
         include 'header.php';
         ?>
         <?php
-        $row = consulta('SELECT * FROM `producto` WHERE `id`=' . $_GET["idProducto"]);
-//        if ($row[0][9] == getNombreUsuario()) {
+        $row = getProducto($_GET["idProducto"]);
+        if (getUsuarioProducto($_GET["idProducto"]) == getNombreUsuario() ) {
             echo '<form method="post" action="crudProducto.php">
                     <input type="hidden" name="id" value="' . $_GET["idProducto"].'">
                     <input type="submit" name="btnBorrar" value="Eliminar Producto">
                  </form>
-                 <form method="post" action="/action_page.php">
+                 <form method="post" action="modificarProducto.php">
                     <input type="hidden"  name="id" value="' . $_GET["idProducto"].'">
                     <input type="submit" name="btnModificar" value="Modificar Producto">
                  </form>';
-//        }
+        }
         echo '<article class="marco">
             <section class="grid-container">
               <div class="fotoG">

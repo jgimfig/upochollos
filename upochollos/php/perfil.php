@@ -6,13 +6,13 @@ include_once 'funciones.php';
  * COMPRUEBA SI EL USUARIO HA INICIADO SESIÓN. SI NO LO ESTÁ, LO REDIRIGE A
  * LA PAGINA DE INICIO DE SESIÓN 
  */
-include_once 'logeado.php';
+//include_once 'logeado.php';
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Newz</title>
+        <title>UpoChollos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,25 +22,32 @@ include_once 'logeado.php';
         <!--ESTILOS PROPIOS DEL PERFIL-->
         <link rel="stylesheet" type="text/css" href="../css/estiloComunidad.css">
         <link rel="stylesheet" type="text/css" href="../css/estiloPerfil.css">
-
+        <link href="../css/estiloPagina.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="../css/estiloCrearProducto.css" rel="stylesheet" type="text/css"/>
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include './libreriasJS.php'; ?>
 
         <!--INCLUSIÓN DE LIBRERIAS JS PROPIAS DEL PERFIL-->
         <script src="../js/tabs/jquery.hashchange.min.js" type="text/javascript"></script>
         <script src="../js/tabs/jquery.easytabs.js" type="text/javascript"></script>
-
+        
         <!--FUNCIONES E INTERACCIONES JS ESPECÍFICAS DEL PERFIL-->
         <script src="../js/tabsPerfil.js" type="text/javascript"></script>
         <script src="../js/cargarNoticiasPublicadas.js" type="text/javascript"></script>
         <script src="../js/cargarComentariosPublicados.js" type="text/javascript"></script>
         <script src="../js/cargarNoticiasGuardadas.js" type="text/javascript"></script>
+        <script src="../js/comprobacionProducto.js" type="text/javascript"></script>
     </head>
     <body>
 
         <?php
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include './header.php';
+        ?>
+        
+        <?php
+        include './crearProducto.php';
         ?>
 
         <!-- DIVISOR PRINCIPAL: Divide contenido prncipal y publicidad -->
@@ -103,7 +110,9 @@ include_once 'logeado.php';
                 </div>
             </div>
         </div>
-
+        
+        
+        
         <!--VISTA DE PESTAÑAS PARA NOTICIAS PUBLICADAS, COMENTARIOS PUBLICADOS Y NOTICIAS GUARDADAS-->
         <!--ES UNA LISTA CON LAS PESTAÑAS DEFINIDAS,  MEDIANTE UN PLUGIN JS SE VERÁ A MODO DE PESTAÑAS-->
         <div id="tab-container" class="tab-container">
@@ -122,6 +131,8 @@ include_once 'logeado.php';
                 <div id="cargarNoticiasGuardadas"><figure id="0"><img src="../img/iconos/iconoCargando.gif" alt="cargando noticias guardadas"/></figure></div>
             </div>
         </div>
+        
+
 
         <!--NCLUIMOS UN BOTÓN DE SUBIR A LA CABECERA -->
         <?php
