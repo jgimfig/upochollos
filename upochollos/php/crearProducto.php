@@ -61,6 +61,6 @@ include_once 'funciones.php';
         Selecciona la imagen que desea subir<br><br><input type="file" id="imagen" name="imagenInput" >
     </div>
     <div class="btnCrearDiv ip3">
-        <input type="submit" name="btnCrear" class="btnCrearProducto" value="Crear Producto"/>
+        <input type="submit" name="btnCrear" class="btnProducto" value="Crear Producto"/>
     </div>    
 </form>			

@@ -20,10 +20,9 @@ include_once 'funciones.php';
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
         <!--ESTILOS PROPIOS DEL PERFIL-->
-        <link rel="stylesheet" type="text/css" href="../css/estiloComunidad.css">
         <link rel="stylesheet" type="text/css" href="../css/estiloPerfil.css">
         <link href="../css/estiloPagina.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="../css/estiloNavAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="../css/estiloCrearProducto.css" rel="stylesheet" type="text/css"/>
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include './libreriasJS.php'; ?>
@@ -45,7 +44,9 @@ include_once 'funciones.php';
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include './header.php';
         ?>
-        
+        <?php
+        include './navAdmin.php';
+        ?>
         <?php
         include './crearProducto.php';
         ?>

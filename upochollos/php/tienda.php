@@ -25,8 +25,6 @@ if(isset($_GET['eliminar'])){
         <link rel="stylesheet" type="text/css" href="../css/estiloTienda.css">
         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
 
-
-
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include 'libreriasJS.php';
         include 'header.php'; ?>
