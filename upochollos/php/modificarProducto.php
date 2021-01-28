@@ -98,7 +98,7 @@ $var = getProducto($_POST['id']);
             <input type="hidden"  name="id" value=<?php echo $_POST["id"]; ?>>
             
             <div class="btnCrearDiv ip3">
-                <input type="submit" name="btnModificar" class="btnModificarProducto" value="Modificar Producto"/>
+                <input type="submit" name="btnModificar" class="btnProducto" value="Modificar Producto"/>
             </div>    
         </form>				
         <!--NCLUIMOS EL ASIDE CON LA PUBLICIDAD Y UN BOTÓN DE SUBIR A LA CABECERA -->
