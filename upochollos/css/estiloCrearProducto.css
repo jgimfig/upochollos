@@ -46,6 +46,8 @@ and open the template in the editor.
     border-radius: 25px;
     border: 2px solid #ffcc00;
     padding: 20px;
+    width: 50%;
+    font-size: 18px;
 }
 
 .ip2{

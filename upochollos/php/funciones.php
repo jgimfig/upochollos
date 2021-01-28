@@ -93,7 +93,6 @@ function getNombreUsuario() {
     return "";
 }
 
-
 function getAdministrador() {
 
     if (session_status() != PHP_SESSION_ACTIVE) {
@@ -101,7 +100,7 @@ function getAdministrador() {
     }
 
     if (comprobarLogin()) {
-        if($_SESSION['tipo']=="admin")
+        if ($_SESSION['tipo'] == "admin")
             return true;
         else
             return false;
@@ -139,39 +138,50 @@ function getURLImagenUsuario() {
 
 function registrarProducto($nombre, $descripcion, $enlace, $precioOriginal, $precioDescuento, $fechaVencimiento, $tienda, $categoria, $imagen) {
 
-    $sql = 'INSERT INTO `producto` (`id`, `enlace`, `precio_original`, `nombre`, `fecha_publicado`, `fecha_vencimiento`, `precio_descuento`, `descripcion`, `imagen`, `usuario`, `nombre_categoria`, `nombre_tienda`) VALUES (NULL, "'.$enlace.'" , "'.$precioOriginal.'", "'.$nombre.'", "'.date('Y-m-d').'", "'.$fechaVencimiento.'", "'.$precioDescuento.'", "'.$descripcion.'", "'.$imagen.'", "'.getNombreUsuario().'", "'.$categoria.'", "'.$tienda.'");';
+    $sql = 'INSERT INTO `producto` (`id`, `enlace`, `precio_original`, `nombre`, `fecha_publicado`, `fecha_vencimiento`, `precio_descuento`, `descripcion`, `imagen`, `usuario`, `nombre_categoria`, `nombre_tienda`) VALUES (NULL, "' . $enlace . '" , "' . $precioOriginal . '", "' . $nombre . '", "' . date('Y-m-d') . '", "' . $fechaVencimiento . '", "' . $precioDescuento . '", "' . $descripcion . '", "' . $imagen . '", "' . getNombreUsuario() . '", "' . $categoria . '", "' . $tienda . '");';
 
     return consulta($sql);
 }
 
-function modificarProducto($nombre, $descripcion, $enlace, $precioOriginal, $precioDescuento, $fechaVencimiento, $tienda, $categoria, $imagen,$id) {
+function modificarProducto($nombre, $descripcion, $enlace, $precioOriginal, $precioDescuento, $fechaVencimiento, $tienda, $categoria, $imagen, $id) {
 
-    $sql = 'UPDATE `producto` SET `enlace`="'.$enlace.'", `precio_original`="'.$precioOriginal.'", `nombre`="'.$nombre.'", `fecha_publicado`="'.date('Y-m-d').'", `fecha_vencimiento`="'.$fechaVencimiento
-            .'", `precio_descuento`="'.$precioDescuento.'", `descripcion`="'.$descripcion
-            .'", `imagen`="'.$imagen.'", `nombre_categoria`="'.$categoria.'", `nombre_tienda`="'.$tienda.'" WHERE `id`='. $id;
+    $sql = 'UPDATE `producto` SET `enlace`="' . $enlace . '", `precio_original`="' . $precioOriginal . '", `nombre`="' . $nombre . '", `fecha_publicado`="' . date('Y-m-d') . '", `fecha_vencimiento`="' . $fechaVencimiento
+            . '", `precio_descuento`="' . $precioDescuento . '", `descripcion`="' . $descripcion
+            . '", `imagen`="' . $imagen . '", `nombre_categoria`="' . $categoria . '", `nombre_tienda`="' . $tienda . '" WHERE `id`=' . $id;
     return consulta($sql);
 }
 
 function eliminarProducto($id) {
-    $sql="DELETE FROM `producto` WHERE id='".$id."';";
-    
+    $sql = "DELETE FROM `producto` WHERE id='" . $id . "';";
+
     return consulta($sql);
 }
 
 function getImagenProducto($id) {
-    $sql="SELECT imagen FROM `producto` WHERE `id`=" . $id;
-    $resultado=consulta($sql);
+    $sql = "SELECT imagen FROM `producto` WHERE `id`=" . $id;
+    $resultado = consulta($sql);
     return $resultado[0];
 }
 
 function getUsuarioProducto($id) {
-    $sql="SELECT usuario FROM `producto` WHERE `id`=" . $id;
-    $resultado= consulta($sql);
-    
+    $sql = "SELECT usuario FROM `producto` WHERE `id`=" . $id;
+    $resultado = consulta($sql);
+
     return implode("", $resultado[0]);
 }
 
 function getProducto($id) {
-    $sql='SELECT * FROM `producto` WHERE `id`=' .$id;
+    $sql = 'SELECT * FROM `producto` WHERE `id`=' . $id;
     return consulta($sql);
+}
+
+function eliminarCategoria($nombre) {
+    $query = "delete from categoria where nombre='" . $nombre . "'";
+    return consulta($query);
+}
+
+function modificarCategoria($nombre, $colorBorde, $colorFondo) {
+    $query = "INSERT INTO categoria (nombre, color_borde, color_fondo) VALUES('" . $nombre . "','" . $colorBorde . "','" . $colorFondo . "') ON DUPLICATE KEY UPDATE    
+ color_borde='" . $colorBorde . "', color_fondo='" . $colorFondo . "'";
+    return consulta($query);
 }

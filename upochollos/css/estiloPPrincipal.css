@@ -1,0 +1,49 @@
+.grid {
+    display: grid;
+    grid-template-columns: 35% 35% 30%;
+    grid-template-rows: 0.1fr 1.5fr 1.5fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "btnChollo btnCupon nothing"
+        "chollo chollo aside"
+        "cupon cupon aside";
+}
+.aside { grid-area: aside; }
+.chollo { grid-area: chollo; }
+.cupon { grid-area: cupon; }
+.btnChollo { grid-area: btnChollo; }
+.btnCupon { grid-area: btnCupon; }
+.nothing { grid-area: nothing;background-color: #555; }
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 100%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+.asideCategoria{
+    text-decoration: none;
+    width: 100%;
+    margin: 10px;
+    border-radius: 25px;
+    padding: 20px;
+}
+.divCategoria{
+    height: 8%;
+    margin-top: 20px;
+}
+
+.asideCategoria:hover{
+    text-decoration: underline;
+}
+.asideTienda{
+    width: 50%;
+}

@@ -3,27 +3,27 @@
 include_once 'funciones.php';
 ?>
 
-<form action="crudProducto.php" method="post" enctype="multipart/form-data" class="grid-container" onsubmit="return comprobarProducto();">
-    <div class="nombreDiv ip2">
+<form action="crud.php" method="post" enctype="multipart/form-data" class="grid-container" onsubmit="return comprobarProducto();">
+    <div class="nombreDiv ip2 col-sm-4">
         Intoducir nombre del producto<br><br><input type="text" id="nombre" name="nombreInput" class="ip"/>
     </div>
-    <div class="enlaceDiv ip2">
+    <div class="enlaceDiv ip2 col-sm-4">
         Intoducir enlace<br><br><input type="url" id="enlace" name="enlaceInput" class="ip"/>
     </div>
-    <div class="descripcionDiv ip2">
+    <div class="descripcionDiv ip2 col-sm-4">
         Intoducir descripción del producto<br><br><textarea id="descripcion" name="descripcionInput" rows="4" cols="50" class="ip"></textarea>
     </div>
-    <div class="precioOriginalDiv ip2">
+    <div class="precioOriginalDiv ip2 col-sm-4">
         Intoducir el precio original<br><br><input type="text"  id="precioOriginal" name="precioOriginalInput" class="ip"/>
     </div>
-    <div class="precioDescuentoDiv ip2">
+    <div class="precioDescuentoDiv ip2 col-sm-4">
         Intoducir el precio con el descuento<br><br><input type="text"  id="precioDescuento" name="precioDescuentoInput" class="ip"/>
     </div>
-    <div class="fechaVencimientoDiv ip2">
+    <div class="fechaVencimientoDiv ip2 col-sm-4">
         <label for="fechaVencimiento">Fecha Vencimiento</label><br><br>
         <input type="date" id="fechaVencimiento" name="fechaVencimientoInput" value=<?php echo "'" . date('Y-m-d', strtotime("+1 week")) . "'"; ?> min=<?php echo "'" . date('Y-m-d') . "'"; ?>><br/><br/>
     </div>
-    <div class="tiendaDiv ip2">
+    <div class="tiendaDiv ip2 col-sm-4">
         Seleccione la tienda donde se vende el producto<br><br>
         <div class="select">
             <select id="tienda" name="tiendaInput" required>
@@ -40,7 +40,7 @@ include_once 'funciones.php';
             </select>
         </div>
     </div>
-    <div class="categoriaDiv ip2">
+    <div class="categoriaDiv ip2 col-sm-4">
         Seleccione la categoria del producto<br><br>
         <div class="select">
             <select id="categoria" name="categoriaInput" required>
@@ -57,7 +57,7 @@ include_once 'funciones.php';
             </select>
         </div>
     </div>
-    <div class="imagenDiv ip2">
+    <div class="imagenDiv ip2 col-sm-4">
         Selecciona la imagen que desea subir<br><br><input type="file" id="imagen" name="imagenInput" >
     </div>
     <div class="btnCrearDiv ip3">
