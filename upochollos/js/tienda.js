@@ -14,12 +14,29 @@ function editar(boton){
         var antigua=document.getElementById("imgEdit");
         var enviar=document.getElementById("crear");
         form.replaceChild(newImg,antigua);
+        document.getElementById("ntienda").disabled=true;
     }else{ 
         var enviar=document.getElementById("crear");
         form.insertBefore(newImg,enviar);
         form.insertBefore(br,enviar);
+        document.getElementById("ntienda").disabled=true;
     }
    
     
     
+}
+
+function error(msg){
+    alert(msg);
+}
+
+function habilita(){
+    if(document.getElementById("imgEdit")!=null){
+        var form=document.getElementsByName("ftienda")[0];
+        var eliminar=document.getElementById("imgEdit");
+        form.removeChild(eliminar);
+    }
+    var antigua=document.getElementById("imgEdit");
+    var t=document.getElementById("ntienda");
+    t.disabled=false;
 }
