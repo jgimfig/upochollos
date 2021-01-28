@@ -39,7 +39,7 @@ if(isset($_GET['eliminar'])){
         <?php
         $row = getProducto($_GET["idProducto"]);
         if (getUsuarioProducto($_GET["idProducto"]) == getNombreUsuario() ) {
-            echo '<form method="post" action="crudProducto.php">
+            echo '<form method="post" action="crud.php">
                     <input type="hidden" name="id" value="' . $_GET["idProducto"].'">
                     <input type="submit" name="btnBorrar" value="Eliminar Producto">
                  </form>

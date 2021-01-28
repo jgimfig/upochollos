@@ -4,11 +4,6 @@ include_once 'funciones.php';
 if (!getAdministrador())
     header('location: ./principal.php');
 
-if (isset($_GET['eliminar'])) {
-    $query = "delete from categoria where nombre='" . $_GET['ncategoria'] . "'";
-    echo $query;
-    consulta($query);
-}
 ?>
 <!DOCTYPE html>
 
@@ -40,14 +35,14 @@ if (isset($_GET['eliminar'])) {
         <main>
             <div id="gestion">
                 <h2>Gestión de categorias</h2>
-                <form name="fcategoria" method="POST" action="#.php">
+                <form name="fcategoria" method="POST" action="crud.php">
                     <p>Nombre Categoria:</p>
                     <input class="input" type="text" name="ncategoria" id="ncategoria"/>
                     <p>Color Borde:</p>
                     <input type="color" id="icolorBorde" name="colorBorde"/></br></br>
                     <p>Color Fondo:</p>
                     <input type="color" id="icolorFondo" name="colorFondo"/></br></br>
-                    <input class="enviar" id="crear" type="submit" value="Crear/Editar"/>
+                    <input class="enviar" id="crear" name="modificarCategoria" type="submit" value="Crear/Editar"/>
                 </form>
             </div>
             <div id="tiendas">
@@ -67,14 +62,14 @@ if (isset($_GET['eliminar'])) {
                         for ($i = 0; $i < count($categoria); $i++) {
                             echo "<tr>"
                             . "<td>" . $categoria[$i][0] . "</td>"
-                            . "<td class='color' style='color:#". $categoria[$i][1] ."'>" . $categoria[$i][1] . "</td>"
-                            . "<td class='color' style='color:#". $categoria[$i][2] ."'>" . $categoria[$i][2] . "</td>"
+                            . "<td class='color' style='color:". $categoria[$i][1] ."'>" . $categoria[$i][1] . "</td>"
+                            . "<td class='color' style='color:". $categoria[$i][2] ."'>" . $categoria[$i][2] . "</td>"
                             . "<td><button class='enviar' onclick=editar(this)>Editar</button></td>";
                             ?>
-                        <form action=".php" method="GET" >
+                        <form action="crud.php" method="post" >
                             <?php
                             echo "<input name='ncategoria' type='hidden' value=" . $categoria[$i][0] . ">";
-                            echo "<td><input class='enviar' name='eliminar' type='submit' value='Eliminar'/></td>";
+                            echo "<td><input class='enviar' name='eliminarCategoria' type='submit' value='Eliminar'/></td>";
                             ?></form><?php
                         echo "</tr>";
                     }

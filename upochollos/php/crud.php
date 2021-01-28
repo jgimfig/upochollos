@@ -28,7 +28,7 @@ if (isset($_POST["btnCrear"])) {
 }
 if (isset($_POST["btnBorrar"])) {
     $nombreImagen = getImagenProducto($_POST['id']);
-    unlink('../img/fotos/'.$nombreImagen[0]);
+    unlink('../img/fotos/' . $nombreImagen[0]);
     eliminarProducto($_POST["id"]);
     header('location: principal.php');
 }
@@ -44,7 +44,7 @@ if (isset($_POST["btnModificar"])) {
             $nombreImagen = basename($_FILES["imagenInput"]["name"]);
             $nombreImagenAntiguo = getImagenProducto($_POST['id']);
             if ($nombreImagen == "") {//No cambiar foto
-                if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagenAntiguo[0],$_POST['id'])) {
+                if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagenAntiguo[0], $_POST['id'])) {
                     header('location: principal.php');
                 } else {
                     echo " <script type='text/javascript'></script>";
@@ -56,7 +56,7 @@ if (isset($_POST["btnModificar"])) {
                 if (!move_uploaded_file($_FILES['imagenInput']['tmp_name'], $target_file)) {
                     echo "La imagen no se ha guardado correctamente.";
                 } else {
-                    if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen,$_POST['id'])) {
+                    if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen, $_POST['id'])) {
                         header('location: principal.php');
                     } else {
                         echo " <script type='text/javascript'></script>";
@@ -64,6 +64,22 @@ if (isset($_POST["btnModificar"])) {
                 }
             }
         }
+    }
+}
+
+if (isset($_POST['eliminarCategoria'])) {
+    if (eliminarCategoria($_POST["ncategoria"])) {
+        header('location: categoria.php');
+    } else {
+        echo " <script type='text/javascript'></script>";
+    }
+}
+
+if (isset($_POST['modificarCategoria'])) {
+    if (modificarCategoria($_POST["ncategoria"], $_POST["colorBorde"], $_POST["colorFondo"])) {
+        header('location: categoria.php');
+    } else {
+        echo " <script type='text/javascript'></script>";
     }
 }
 ?>

@@ -29,7 +29,7 @@ $var = getProducto($_POST['id']);
         include 'header.php';
         ?>
 
-        <form action="crudProducto.php" method="post" enctype="multipart/form-data" class="grid-container" onsubmit="return comprobarModificacionProducto();">
+        <form action="crud.php" method="post" enctype="multipart/form-data" class="grid-container" onsubmit="return comprobarModificacionProducto();">
             <div class="nombreDiv ip2">
                 Intoducir nombre del producto<br><br><input type="text" id="nombre" name="nombreInput" class="ip" value= <?php echo "'" . $var[0][3] . "'"; ?>/>
             </div>
@@ -43,7 +43,7 @@ $var = getProducto($_POST['id']);
                 Intoducir el precio original<br><br><input type="text"  id="precioOriginal" name="precioOriginalInput" class="ip" value= <?php echo "'" . $var[0][2] . "'"; ?>/>
             </div>
             <div class="precioDescuentoDiv ip2">
-                Intoducir el precio con el descuento<br><br><input type="text"  id="precioDescuento" name="precioDescuentoInput" class="ip"value= <?php echo "'" . $var[0][6] . "'"; ?>/>
+                Intoducir el precio con el descuento<br><br><input type="text"  id="precioDescuento" name="precioDescuentoInput" class="ip" value= <?php echo "'" . $var[0][6] . "'"; ?>/>
             </div>
             <div class="fechaVencimientoDiv ip2">
                 <label for="fechaVencimiento">Fecha Vencimiento</label><br><br>
