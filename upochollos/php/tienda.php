@@ -6,9 +6,33 @@ if (!getAdministrador())
 
 if(isset($_GET['eliminar'])){
     $query="delete from tienda where nombre='".$_GET['ntienda']."'";
-    echo $query;
-    consulta($query);
+    if(!consulta($query))
+        echo "<script>alert('No se puede eliminar ya que hay un producto asociado a dicha tienda');</script>";
 }
+
+if(isset($_POST['crear'])){
+    $nombre=filter_input(INPUT_POST,'ntienda',FILTER_SANITIZE_MAGIC_QUOTES);
+    $query="select count(1) from tienda where nombre='".$nombre."'";
+    if($nombre!="" && $_FILES['logo']['error']==0){        
+        if(consulta($query)[0][0]>0){ //Si ya existe esa tienda actualizamos el logo
+            $actualiza="update tienda set logo='".$_FILES['logo']['name']."' where nombre='".$nombre."'";
+            echo $actualiza;
+            consulta($actualiza);
+            agregaImagen($nombre);
+        }else{      //Si no existe la tienda la creamos e insertamos el logo
+            $insertar="insert into tienda values('".$nombre."','".$_FILES['logo']['name']."')";
+            consulta($insertar);
+            agregaImagen($nombre);
+        }
+    }else
+        echo "<script> alert('ERROR: El nombre y el logo deben de estar rellenos');</script>";
+}    
+    
+function agregaImagen($nombre){
+    $tmp=$_FILES['logo']['tmp_name'];
+    move_uploaded_file($tmp, "../img/tiendas/".$_FILES['logo']['name']);
+}
+
 ?>
 <!DOCTYPE html>
 
@@ -38,12 +62,13 @@ if(isset($_GET['eliminar'])){
         <main>
             <div id="gestion">
                 <h2>Gestión de tiendas</h2>
-                <form name="ftienda" enctype="multipart/form-data" method="POST" action="principal.php">
+                <form name="ftienda" enctype="multipart/form-data" method="POST" action="tienda.php">
                     <p>Nombre tienda:</p>
                     <input class="input" type="text" name="ntienda" id="ntienda"/>
+                    <span id="new"><input type="reset" class="enviar" onclick="habilita()"/></span>
                     <p>Logo:</p>
                     <input type="file" name="logo"/></br></br>
-                    <input class="enviar" id="crear" type="submit" value="Crear/Editar"/>
+                    <input class="enviar" id="crear" name="crear" type="submit" value="Crear/Editar" onclick="habilita()"/>
                 </form>
             </div>
             <div id="tiendas">
