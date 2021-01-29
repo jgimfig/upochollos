@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-ene-2021, 19:21:22
+    Author     : User
+*/
+.container {
+	 max-width: 1500px;
+	 margin: 1em auto;
+	 padding: 1em;
+}
+ .stacktable {
+	 width: 100%;
+}
+ .st-head-row {
+	 padding-top: 1em;
+}
+ .st-head-row.st-head-row-main {
+	 font-size: 1.5em;
+	 padding-top: 0;
+}
+ .st-key {
+	 width: 49%;
+	 text-align: right;
+	 padding-right: 1%;
+}
+ .st-val {
+	 width: 49%;
+	 padding-left: 1%;
+}
+ 
+
+td{
+    width: 100px;
+    text-align: center;
+}
+
+img{
+    width: 100%;
+}
+
+table{
+    justify-content: center;
+}
+
+.enviar{
+    background-color: rgba(248,181,0,1) ;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#crear{
+    width: 25%;
+}
+
+.input{
+    border-radius: 5px;
+}
+
+#imgEdit{
+    width: 20%;
+}
+.color:hover{
+    background-color: black;
+}

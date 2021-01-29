@@ -2,11 +2,6 @@
 // INLCUIMOS LAS FUNCIONES PHP COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
 
-if(isset($_GET['eliminar'])){
-    $query="delete from tienda where nombre='".$_GET['ntienda']."'";
-    echo $query;
-    consulta($query);
-}
 ?>
 <!DOCTYPE html>  
 <html>  
