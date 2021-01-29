@@ -62,3 +62,7 @@ table{
 #imgEdit{
     width: 20%;
 }
+
+#new{
+    display: inline-block;
+}
