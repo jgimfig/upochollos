@@ -32,12 +32,15 @@ for($var=0;$var<count($row);$var++){
               <div>
                     <p>' . $row[$var][4] . '</p>
               </div>
-               <div>
+              <div>
                     <p>' . $row[$var][2] . '</p>
               </div>
+              <div>
+                    <p>' . $row[$var][6] . '</p>
+              </div>
               <div class="boton">                  
-                    <form action="producto.php" method="GET">
-                    <input type="hidden" name="idProducto" id="idProducto" value="' . $row[$var][0] . '">
+                    <form action="cupon.php" method="GET">
+                    <input type="hidden" name="idCupon" id="idCupon" value="' . $row[$var][0] . '">
                     <input type="submit" value="Ir al producto">
                     </form>
               </div>

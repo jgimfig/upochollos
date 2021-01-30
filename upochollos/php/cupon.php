@@ -1,7 +1,9 @@
 <?php
 // INLCUIMOS LAS FUNCIONES PHP COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
-
+if (!isset($_GET["idCupon"])) {
+    header('location: ./principal.php');
+}
 ?>
 <!DOCTYPE html>  
 <html>  
@@ -14,8 +16,10 @@ include_once 'funciones.php';
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
         <!--ESTILOS PROPIOS-->
-         <link rel="stylesheet" type="text/css" href="../css/estiloPaginacion.css">
-         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
+        <!--        <link rel="stylesheet" type="text/css" href="../css/estiloPaginacion.css">-->
+        <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
+        <link href="../css/estiloClipboard.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/estiloPerfil.css" rel="stylesheet" type="text/css"/>
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include 'libreriasJS.php'; ?>
 
@@ -23,6 +27,22 @@ include_once 'funciones.php';
         <script type='text/javascript' src='../js/comprobacionProducto.js'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script>
+            function cpy() {
+                /* Get the text field */
+                var copyText = document.getElementById("input");
+
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+
+                /* Alert the copied text */
+                alert("Copiado el codigo: " + copyText.value);
+            }
+        </script>
     </head>
 
 
@@ -32,48 +52,45 @@ include_once 'funciones.php';
         include 'header.php';
         ?>
         <?php
-        $row = getProducto($_GET["idProducto"]);
-        if (getUsuarioProducto($_GET["idProducto"]) == getNombreUsuario() ) {
-            echo '<form method="post" action="crud.php">
-                    <input type="hidden" name="id" value="' . $_GET["idProducto"].'">
-                    <input type="submit" name="btnBorrar" value="Eliminar Producto">
+        $row = getCupon($_GET["idCupon"]);
+        if (getUsuarioCupon($_GET["idCupon"]) == getNombreUsuario() || getAdministrador()) {
+            echo '<div class = "gridC">
+                <div class = "btnChollo" id = "divChollo">
+                    
+                    <form method="post" action="crud.php">
+                    <input type="hidden" name="id" value="' . $_GET["idCupon"] . '">
+                        <button class = "tablink" name="eliminarCupon">Eliminar Cupón</button>
                  </form>
-                 <form method="post" action="modificarProducto.php">
-                    <input type="hidden"  name="id" value="' . $_GET["idProducto"].'">
-                    <input type="submit" name="btnModificar" value="Modificar Producto">
-                 </form>';
-        }
-        echo '<article class="marco">
-            <section class="grid-container">
-              <div class="fotoG">
-                <img class="fotoGrid" src="../img/fotos/' . $row[0][8] . '" alt="' . $row[0][3] . '">
-              </div>
-              <div class="titulo">
-               <strong>' . $row[0][3] . '</strong>
-              </div>
-              <div class="precio">
-                <span>
-                    <span>' . $row[0][6] . '</span>
-                    <span>' . $row[0][2] . '</span>
-                    <span>' . $row[0][11] . '</span>
-                </span>
-              </div>
-              <div class="descripcion">
-                <div>
-                    <p>' . $row[0][7] . '</p>
                 </div>
+                <div class = "btnCupon" id = "divCupones">
+                    <form method="post" action="modificarCupon.php">
+                    <input type="hidden"  name="id" value="' . $_GET["idCupon"] . '">
+                    <button class = "tablink" name="btnModificar">Modificar Cúpon</button>
+                 </form>
+                    
+                </div>
+            </div>';
+        }
+        echo '<div>
+               <strong>' . $row[0][1] . '</strong>
               </div>
-              <div class="autor">
-                <span>
-                    <i class="fas fa-user-edit"></i>
-                    <p>' . $row[0][9] . '</p>
-                </span>
+              <div>
+                    <p>' . $row[0][5] . '</p>
               </div>
-              <div class="boton">
-                <a href="'. $row[0][1] .'" class="button btn btn-primary" target="_blank">Ir al producto</a>
+              <div>
+                    <p>' . $row[0][3] . '</p>
               </div>
-            </section>
-            </article><br />';
+              <div>
+                    <p>' . $row[0][4] . '</p>
+              </div>
+              <div>
+                    <p>' . $row[0][6] . '</p>
+              </div>
+              <div>
+                    <input type="text" value=' . $row[0][2] . ' id="input" disabled>
+                    <button onclick="cpy()">Copy text</button>  
+              </div>
+            ';
         ?>     
     </body>  
 </html> 

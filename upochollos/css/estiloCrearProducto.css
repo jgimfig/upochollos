@@ -67,6 +67,8 @@ and open the template in the editor.
     justify-content: center;
     align-items: center;
 }
+
+
 .btnProducto{
     background-color: rgba(248,181,0,1) ;
     border-radius: 5px;
@@ -75,6 +77,7 @@ and open the template in the editor.
     color: white;
     font-size: 15px;
 }
+
 
 
 /* Reset Select */

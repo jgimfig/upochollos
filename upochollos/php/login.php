@@ -29,7 +29,7 @@ if (isset($_POST['iniciarSesion'])) {
                         setcookie('usuario', $us, time() + 86400 * 30);
                     }
 
-                    header('location: chollos.php');
+                    header('location: principal.php');
                 } else {
                     $error = true;
                 }

@@ -15,15 +15,16 @@ session_start();
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
         <!--ESTILOS PROPIOS DE COMUNIDAD-->
-<!--        <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">-->
+        <!--        <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">-->
         <link rel="stylesheet" type="text/css" href="../css/estiloPaginacion.css">
         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
         <link href="../css/estiloPPrincipal.css" rel="stylesheet" type="text/css"/>
+
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include './libreriasJS.php'; ?>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 
@@ -77,11 +78,11 @@ session_start();
                 document.getElementById(pageName).style.display = "block";
                 elmnt.style.backgroundColor = color;
             }
-            function myFunction(page,element) {
-                openPage(page, element, 'orange');
-                $("#chollo").toggle();
-                $("#cupon").toggle();
-            }
+//            function open(page,element) {
+//                openPage(page, element, 'orange');
+//                $("#chollo").toggle();
+//                $("#cupon").toggle();
+//            }
         </script>
     </head>
     <body>

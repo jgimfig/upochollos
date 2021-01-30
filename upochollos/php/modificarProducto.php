@@ -1,7 +1,10 @@
 <?php
 // FUNCIONES COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
-$var = getProducto($_POST['id']);
+
+if (getNombreUsuario() == "" && !isset($_POST["idCupon"])) {
+    header('location: ./principal.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,8 +30,9 @@ $var = getProducto($_POST['id']);
         <?php
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include 'header.php';
+        $var = getProducto($_POST['id']);
         ?>
-
+        
         <form action="crud.php" method="post" enctype="multipart/form-data" class="grid-container" onsubmit="return comprobarModificacionProducto();">
             <div class="nombreDiv ip2">
                 Intoducir nombre del producto<br><br><input type="text" id="nombre" name="nombreInput" class="ip" value= <?php echo "'" . $var[0][3] . "'"; ?>/>

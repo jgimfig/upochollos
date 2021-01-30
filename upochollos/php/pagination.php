@@ -25,12 +25,19 @@ for($var=0;$var<count($row);$var++){
               <div class="titulo">
                <strong>' . $row[$var][3] . '</strong>
               </div>
-              <div class="precio">
-                <span>
-                    <span>' . $row[$var][6] . '</span>
+              <div class="categoria">
+              <i class="fas fa-tag"></i>
+               <span>' . $row[$var][10] . '</span>
+              </div>
+              <div class="precioAntes">
+               <span>' . $row[$var][6]  . '</span>
+              </div>
+              <div class="precioAhora">
                     <span>' . $row[$var][2] . '</span>
-                    <span>' . $row[$var][11] . '</span>
-                </span>
+              </div>
+              <div class="tienda">
+              <i class="fas fa-store"></i>
+               <span>' . $row[$var][11] . '</span>
               </div>
               <div class="descripcion">
                 <div>
@@ -40,13 +47,13 @@ for($var=0;$var<count($row);$var++){
               <div class="autor">
                 <span>
                     <i class="fas fa-user-edit"></i>
-                    <p>' . $row[$var][9] . '</p>
+                    <span>' . $row[$var][9] . '</span>
                 </span>
               </div>
-              <div class="boton">                  
+              <div class="button">                  
                     <form action="producto.php" method="GET">
                     <input type="hidden" name="idProducto" id="idProducto" value="' . $row[$var][0] . '">
-                    <input type="submit" value="Ir al producto">
+                    <button class="botonI">Ir al producto</button>
                     </form>
               </div>
             </section>

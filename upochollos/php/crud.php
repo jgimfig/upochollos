@@ -30,7 +30,10 @@ if (isset($_POST["btnBorrar"])) {
     $nombreImagen = getImagenProducto($_POST['id']);
     unlink('../img/fotos/' . $nombreImagen[0]);
     eliminarProducto($_POST["id"]);
-    header('location: principal.php');
+    if (getAdministrador()) {
+        header('location: productos.php');
+    } else
+        header('location: principal.php');
 }
 
 if (isset($_POST["btnModificar"])) {
@@ -78,6 +81,38 @@ if (isset($_POST['eliminarCategoria'])) {
 if (isset($_POST['modificarCategoria'])) {
     if (modificarCategoria($_POST["ncategoria"], $_POST["colorBorde"], $_POST["colorFondo"])) {
         header('location: categoria.php');
+    } else {
+        echo " <script type='text/javascript'></script>";
+    }
+}
+if (isset($_POST["btnCrearCupon"])) {
+    if (isset($_POST['cnombre']) && isset($_POST['ccodigo']) && isset($_POST['cFechaPublicacion']) && isset($_POST['cFechaVencimiento']) && isset($_POST['cdescripcion'])) {
+        $nombre = filter_var($_POST['cnombre'], FILTER_SANITIZE_STRING);
+        $codigo = filter_var($_POST['ccodigo'], FILTER_SANITIZE_STRING);
+        $descripcion = filter_var($_POST['cdescripcion'], FILTER_SANITIZE_STRING);
+        if ($nombre !== false && $descripcion !== false && $codigo !== false) {
+            if (isset($_POST['cId'])) {
+                if (registrarCupon($_POST['cId'], $nombre, $codigo, $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'], $descripcion)) {
+                    header('location: principal.php');
+                } else {
+                    echo " <script type='text/javascript'></script>";
+                }
+            } else {
+                if (registrarCupon(NULL, $nombre, $codigo, $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'], $descripcion)) {
+                    header('location: principal.php');
+                } else {
+                    echo " <script type='text/javascript'></script>";
+                }
+            }
+        }
+    }
+}
+if (isset($_POST['eliminarCupon'])) {
+    if (eliminarCupon($_POST["id"])) {
+        if (getAdministrador()) {
+            header('location: cupones.php');
+        } else
+            header('location: principal.php');
     } else {
         echo " <script type='text/javascript'></script>";
     }
