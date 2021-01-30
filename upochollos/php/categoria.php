@@ -4,6 +4,11 @@ include_once 'funciones.php';
 if (!getAdministrador())
     header('location: ./principal.php');
 
+if(isset($_GET['eliminar'])){
+    $query="delete from categoria where nombre='".$_GET['ncategoria']."'";
+    if(!consulta($query))
+        echo "<script>alert('No se puede eliminar ya que hay un producto asociado a dicha categoria');</script>";
+}
 ?>
 <!DOCTYPE html>
 

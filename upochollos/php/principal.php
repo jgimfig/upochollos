@@ -1,6 +1,7 @@
 <?php
 // FUNCIONES COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +15,9 @@ include_once 'funciones.php';
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
         <!--ESTILOS PROPIOS DE COMUNIDAD-->
-        <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">
+<!--        <link rel="stylesheet" type="text/css" href="../css/estiloPrincipal.css">-->
         <link rel="stylesheet" type="text/css" href="../css/estiloPaginacion.css">
         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
-        <link href="../css/estiloTab.css" rel="stylesheet" type="text/css"/>
         <link href="../css/estiloPPrincipal.css" rel="stylesheet" type="text/css"/>
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include './libreriasJS.php'; ?>
@@ -30,6 +30,7 @@ include_once 'funciones.php';
         <script>
             $(document).ready(function () {
                 load_data();
+                load_Cupones();
                 function load_data(page)
                 {
                     $.ajax({
@@ -55,9 +56,13 @@ include_once 'funciones.php';
                 $(document).on('click', '.pagination_link', function () {
                     var page = $(this).attr("id");
                     load_data(page);
+                });
+                $(document).on('click', '.paginationCupon_link', function () {
+                    var page = $(this).attr("id");
                     load_Cupones(page);
                 });
                 document.getElementById("defaultOpen").click();
+                document.getElementById("cupon").hide();
             });
             function openPage(pageName, elmnt, color) {
                 var i, tabcontent, tablinks;
@@ -71,6 +76,11 @@ include_once 'funciones.php';
                 }
                 document.getElementById(pageName).style.display = "block";
                 elmnt.style.backgroundColor = color;
+            }
+            function myFunction(page,element) {
+                openPage(page, element, 'orange');
+                $("#chollo").toggle();
+                $("#cupon").toggle();
             }
         </script>
     </head>
@@ -91,13 +101,11 @@ include_once 'funciones.php';
             <div class="btnCupon">
                 <button class="tablink" onclick="openPage('cupon', this, 'orange')">Cupones</button>
             </div>
-            <div class="nothing">
-                
-            </div>
-            <div class="tabcontent chollo tab" id="chollo">
+            <div class="nothing"></div>
+            <div class="tabcontent producto tab" id="chollo">
                 <div class="table-responsive" id="pagination_data"></div>
             </div>
-            <div class="tabcontent cupon tab" id="cupon">
+            <div class="tabcontent producto tab" id="cupon">
                 <div class="table-responsive" id="paginationCupones_data"></div> 
             </div>
         </div>
