@@ -170,6 +170,13 @@ function getUsuarioProducto($id) {
     return implode("", $resultado[0]);
 }
 
+function getUsuarioCupon($id) {
+    $sql = "SELECT usuario FROM `cupon` WHERE `id`=" . $id;
+    $resultado = consulta($sql);
+
+    return implode("", $resultado[0]);
+}
+
 function getProducto($id) {
     $sql = 'SELECT * FROM `producto` WHERE `id`=' . $id;
     return consulta($sql);
@@ -185,3 +192,21 @@ function modificarCategoria($nombre, $colorBorde, $colorFondo) {
  color_borde='" . $colorBorde . "', color_fondo='" . $colorFondo . "'";
     return consulta($query);
 }
+
+function getCupon($id) {
+    $sql = 'SELECT * FROM `cupon` WHERE `id`=' . $id;
+    return consulta($sql);
+}
+
+function registrarCupon($id, $nombre, $codigo, $fechaPublicado, $fechaVencimiento, $descripcion) {
+
+    $sql = 'INSERT INTO `cupon` (`id`, `nombre`, `codigo`, `fecha_publicado`, `fecha_vencimiento`, `descripcion`,`usuario`) VALUES ("' . $id . '", "' . $nombre . '" , "' . $codigo . '", "' . $fechaPublicado . '", "' . $fechaVencimiento . '", "' . $descripcion . '", "' . getNombreUsuario() . '") ON DUPLICATE KEY UPDATE    
+nombre="' . $nombre . '",codigo="' . $codigo . '",fecha_publicado="' . $fechaPublicado . '",fecha_vencimiento="' . $fechaVencimiento . '",descripcion="' . $descripcion . '"';
+    return consulta($sql);
+}
+
+function eliminarCupon($id) {
+    $query = "delete from cupon where id='" . $id . "'";
+    return consulta($query);
+}
+

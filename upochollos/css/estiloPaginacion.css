@@ -12,35 +12,56 @@ section {
 }
 
 .grid-container {
+    padding: 10px;
+    margin:20px;
     display: grid;
-    grid-template-columns: 27% 61% 10%;
-    grid-template-rows: 10% 10% 50% 10%;
+    background-color: white;
+    grid-template-columns: 30% 22% 22% 20%;
+    grid-template-rows: 10% 15% 50% 20%;
     gap: 10px 10px;
     grid-template-areas:
-        "fotoG titulo titulo"
-        "fotoG precio precio"
-        "fotoG descripcion descripcion"
-        "fotoG autor button";
+        "fotoG titulo titulo categoria"
+        "fotoG precioAntes precioAhora tienda"
+        "fotoG descripcion descripcion descripcion"
+        "fotoG autor autor button";
+    -webkit-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+}
+.fotoG { grid-area: fotoG; }
+.descripcion { grid-area: descripcion;  font-size: 17px;  font-family: Arial, Helvetica, sans-serif;}
+.autor { grid-area: autor; }
+.button { grid-area: button; }
+.precioAntes { grid-area: precioAntes; font-size: 17px; text-decoration: line-through; color: grey;}
+.precioAhora { grid-area: precioAhora; font-size: 17px; color: orangered;font-weight: bold;}
+.precioAhora::before {
+  font-size: 17px;font-weight: bold;color:black;
+  content: "Precio en oferta:  ";
+}
+.precioAhora::after {
+  font-size: 17px; color: orangered;font-weight: bold;
+  content: " €";
 }
 
-.fotoG { grid-area: fotoG; }
+.precioAntes::before {
+  content: "Precio:  ";
+}
+.precioAntes::after {
+  content: " €";
+}
 
-.titulo { grid-area: titulo; }
-
-.precio { grid-area: precio; }
-
-.descripcion { grid-area: descripcion; }
-
-.autor { grid-area: autor; }
-
-.button { grid-area: button; }
+.tienda { grid-area: tienda; }
+.titulo { grid-area: titulo; font-size: 20px;}
+.categoria { grid-area: categoria; }
 
 .fotoGrid {
     height: 100%;
     width: 100%;
 }
-
-.button {
+.fotoG img{
+    height: auto; width: 100%;
+}
+.botonI {
     border: none;
     color: white;
     width: 100%;
@@ -50,6 +71,12 @@ section {
     display: inline;
     font-size: 12px;
     cursor: pointer;
+    width: 100%;
+    background-color: orange;
+    outline: none;
+    height: 100%;
 }
 
-.buttonC {background-color: orangered;}
+.botonI:hover {
+    background-color: #777;
+}
