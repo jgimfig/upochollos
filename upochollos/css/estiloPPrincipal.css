@@ -13,7 +13,7 @@
 .nothing { grid-area: nothing;background-color: #555;  }
 .aside { grid-area: aside; }
 .producto { grid-area: producto; }
-}
+
 .btnChollo { grid-area: btnChollo; }
 .btnCupon { grid-area: btnCupon; }
 .nothing { grid-area: nothing; }
@@ -48,6 +48,7 @@
 .asideCategoria:hover{
     text-decoration: underline;
 }
+
 .asideTienda{
     width: 50%;
 }
