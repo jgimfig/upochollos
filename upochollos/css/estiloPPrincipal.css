@@ -53,3 +53,8 @@
 .asideTienda{
     width: 50%;
 }
+
+#anuncios img{
+    width: 20%;    
+    margin: 5%;
+}
