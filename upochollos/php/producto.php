@@ -34,10 +34,8 @@ if (!isset($_GET["idProducto"])) {
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <!-- RateYO! -->
         <script src="https://prrashi.github.io/rateYo/bower_components/jquery-rateyo/min/jquery.rateyo.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="jquery.rateyo.min.css">
-        <style>
-            @import url("https://prrashi.github.io/rateYo/bower_components/jquery-rateyo/min/jquery.rateyo.min.css");
-        </style>
+        <link href="../css/estiloStar.css" rel="stylesheet" type="text/css"/>
+
         <script>
             $(document).ready(function () {
                 listComment();
@@ -80,17 +78,16 @@ if (!isset($_GET["idProducto"])) {
                         }
                     });
                 });
-
-                function rateProducto() {
-//                    document.getElementById("starForm").submit();
-                    alert("ddd");
-                }
                 $("#rateYo").rateYo().on("rateyo.change", function (e, data) {
                     var rating = data.rating;
-                    $(this).parent().find('input[name=rating]').val(rating); //add rating value to input field
+                    $("#rate").val(rating);
                 });
             });
-
+            function rateProducto() {
+                var p = $("#rate").val();
+                $('#aux').html('<form action="./crud.php" id="starForm" method="post"><input type="hidden" name="rating" value="' + p + '"><input type="hidden" name="idProducto" value="' +<?php echo $_GET["idProducto"]; ?> + '"></form>');
+                $('#starForm').submit();
+            }
         </script>
     </head>
 
@@ -100,6 +97,7 @@ if (!isset($_GET["idProducto"])) {
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include 'header.php';
         ?>
+
         <?php
         $row = getProducto($_GET["idProducto"]);
         if (getUsuarioProducto($_GET["idProducto"]) == getNombreUsuario() || getAdministrador()) {
@@ -125,17 +123,11 @@ if (!isset($_GET["idProducto"])) {
               <div class="fotoG">
                 <img class="fotoGrid" src="../img/fotos/' . $row[0][8] . '" alt="' . $row[0][3] . '">
               </div>
-              <div class="titulo" onclick="rateProducto();">
+              <div class="titulo">
                <strong>' . $row[0][3] . '</strong>
-              </div>';
-
-        echo '<form action="add_rate.php" method="post">
-                <div id="rateYo" class= "rating" data-rateyo-rating="' . getPuntuaciones($_GET["idProducto"]) . '" onclick="rateProducto()"></div>
-                <input type="hidden" name="rating">
-                <input type="submit" id="starForm">
-              </form>';
-
-        echo '</div> 
+              </div>
+              <div id="rateYo" class= "rating" data-rateyo-rating="' . getPuntuaciones($_GET["idProducto"]) . '" onclick="rateProducto()"></div>
+              </div> 
               <div class="ct">
               <i class="fas fa-tag"></i>
                 <span>' . $row[0][10] . '</span>
@@ -188,5 +180,8 @@ if (!isset($_GET["idProducto"])) {
         }
         ?>
         <div id="output"></div>
+        <div id="aux">
+            <input id="rate" type="hidden" value="">
+        </div>
     </body>  
 </html> 

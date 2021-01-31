@@ -25,8 +25,8 @@ session_start();
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <script>
             $(document).ready(function () {
@@ -54,18 +54,7 @@ session_start();
                         }
                     })
                 }
-                function filtrado(filtro)
-                {
-                    alert("HOla");
-//                    $('#formDiv').append('<form id="target" action="/principalFiltrado.php" method="post">');
-//                    var s='<input type="hidden" name="filtro" value="'+filtro+'">';
-//                    $('#formDiv').append(s);
-//                    $('#formDiv').append('<input id="target" type="submit" value="">');
-//                    $('#formDiv').append('</form>');
-//                    $( "#target" ).submit();
-                }
-
-                $(document).on('click', '.pagi    nation_link', function () {
+                $(document).on('click', '.pagination_link', function () {
                     var page = $(this).attr("id");
                     load_data(page);
                 });
@@ -74,7 +63,7 @@ session_start();
                     load_Cupones(page);
                 });
                 document.getElementById("defaultOpen").click();
-                document.getElementById("cupon").hide();
+                $("#cupon").hide();
             });
             function openPage(pageName, elmnt, color) {
                 var i, tabcontent, tablinks;
@@ -89,11 +78,11 @@ session_start();
                 document.getElementById(pageName).style.display = "block";
                 elmnt.style.backgroundColor = color;
             }
-            //            function open(page,element) {
-//                openPage(page, element, 'orange');
-//                $("#chollo").toggle();
-//                $("#cupon").toggle();
-//            }
+            function filtrado(filtro){
+                var s='<input type="hidden" name="filtrado" value="'+filtro+'">';
+                $('#formDiv').html('<form id="target" action="./principalFiltrado.php" method="get">'+s+'<input id="target" type="submit" value=""></form>');
+                $( "#target" ).submit();
+            }
         </script>
     </head>
     <body>

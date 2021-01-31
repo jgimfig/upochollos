@@ -117,5 +117,33 @@ if (isset($_POST['eliminarCupon'])) {
         echo " <script type='text/javascript'></script>";
     }
 }
+
+if (isset($_POST['rating'])) {
+    if (getUsuarioPuntua($_POST["idProducto"]) == 0) {
+        if (getNombreUsuario() != "") {
+            if (puntuar($_POST["idProducto"], $_POST["rating"])) {
+                echo "<script>
+                    alert('Se ha guardado la puntuacion correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
+            } else {
+                echo "<script>
+                    alert('No se ha guardado la puntuacion correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Debes de estar logueado para puntuar.');
+                    window.location.href='./principal.php';
+                    </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Solo se puede puntuar un producto 1 vez.');
+                window.location.href='./principal.php';
+                </script>";
+    }
+}
 ?>
 

@@ -2,8 +2,7 @@
 // FUNCIONES COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
 session_start();
-//$_SESSION['filtro']=$_POST['filtro'];
-$_SESSION['filtro']="Ana-lytics";
+$_SESSION['filtro']=$_GET['filtrado'];
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +26,6 @@ $_SESSION['filtro']="Ana-lytics";
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 
         <script>
             $(document).ready(function () {
@@ -44,25 +41,7 @@ $_SESSION['filtro']="Ana-lytics";
                         }
                     })
                 }
-                $(document).on('click', '.pagination_link', function () {
-                    var page = $(this).attr("id");
-                    load_data(page);
-                });
-                document.getElementById("defaultOpen").click();
             });
-            function openPage(pageName, elmnt, color) {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tab");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-                tablinks = document.getElementsByClassName("tablink");
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].style.backgroundColor = "";
-                }
-                document.getElementById(pageName).style.display = "block";
-                elmnt.style.backgroundColor = color;
-            }
         </script>
     </head>
     <body>
@@ -71,13 +50,13 @@ $_SESSION['filtro']="Ana-lytics";
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include './header.php';
         ?>
-            <div class="tabcontent producto tab" id="chollo">
-                <div class="table-responsive" id="pagination_data"></div>
-            </div>
+        <div class="tabcontent producto tab" id="chollo">
+            <div class="table-responsive" id="pagination_data"></div>
         </div>
-        <?php
-        //INCLUIMOS EL FOOTER
-        include './footer.php';
-        ?>
-    </body>
+    </div>
+    <?php
+    //INCLUIMOS EL FOOTER
+    include './footer.php';
+    ?>
+</body>
 </html>
