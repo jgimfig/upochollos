@@ -71,6 +71,9 @@ if (getNombreUsuario() == "") {
             <div class="btnCupon" id="divCupones">
                 <button class="tablink" id="btnCupones">Cupón</button>
             </div>
+            <div class="btnUser" onclick="location.href='./usuario.php';">
+                <button class="tablink" id="btnCupones">Usuario</button>
+            </div>
         </div>
         <?php
         include './navAdmin.php';
