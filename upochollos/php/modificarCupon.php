@@ -23,7 +23,7 @@ $var = getCupon($_POST['id']);
         <?php include 'libreriasJS.php'; ?>
 
         <!--FUNCIONES E INTERACCIONES JS ESPECÍFICAS DE COMUNIDAD-->
-        
+        <script src="../js/comprobacionCupon.js" type="text/javascript"></script>
     </head>
     <body>
 
@@ -32,7 +32,7 @@ $var = getCupon($_POST['id']);
         include 'header.php';
         ?>
         <div align="center" id="cupon">
-            <form name="fcategoria" method="POST" action="crud.php">
+            <form name="fcategoria" method="POST" action="crud.php" onsubmit="return comprobarCupon();">
                 <p>Nombre Cupón:</p>
                 <input type="text" class="ip4" name="cnombre" id="nombre" value= <?php echo "'" . $var[0][1] . "'"; ?> required/>
                 <p>Código Cupon:</p>
