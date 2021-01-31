@@ -34,12 +34,9 @@ if (isset($_GET['eliminar'])) {
         <script type='text/javascript' src='../js/comprobacionLogin.js'></script>
         <script type='text/javascript' src='../js/categoria.js'></script>
         <script type='text/javascript' src='https://raw.githubusercontent.com/johnpolacek/stacktable.js/master/stacktable.js'></script>
-        <script>
-            $('#responsive-table').stacktable({myClass: 'stacktable small-only'});
-        </script>
     </head>
     <body>
-        <main>
+        <main style="border-top: solid rgba(248,181,0,1) 1px">
             <div class="container">
                 <table id="responsive-table" class="large-only" cellspacing="0">
                     <tbody>
@@ -81,6 +78,10 @@ if (isset($_GET['eliminar'])) {
                 </table>
             </div>
         </main>
+                        <?php
+//INCLUIMOS EL FOOTER
+        include './footer.php';
+        ?>
     </body>
 </html>
 
