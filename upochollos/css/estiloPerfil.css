@@ -1,13 +1,14 @@
 .gridC {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 34% 33%;
     grid-template-rows: 0.1fr;
-    gap: 0px 0px;
+    gap: 0px 0px 0px;;
     grid-template-areas:
-        "btnProducto btnChollo";
+        "btnProducto btnChollo btnUser";
 }
 .btnProducto { grid-area: btnProducto; }
 .btnChollo { grid-area: btnChollo; }
+.btnUser { grid-area: btnUser; }
 
 /* Style tab links */
 .tablink {
