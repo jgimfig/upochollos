@@ -153,7 +153,8 @@ function modificarProducto($nombre, $descripcion, $enlace, $precioOriginal, $pre
 
 function eliminarProducto($id) {
     $sql = "DELETE FROM `producto` WHERE id='" . $id . "';";
-
+    consulta("DELETE FROM `puntua` WHERE id_producto='" . $id . "';");
+    consulta("DELETE FROM `comentario` WHERE id_producto='" . $id . "';");
     return consulta($sql);
 }
 
@@ -225,12 +226,16 @@ function getPuntuaciones($id) {
 }
 
 function getUsuarioPuntua($id) {
-    $query = "SELECT COUNT(*) FROM `puntua` WHERE `id_producto`='" . $id . "' AND `nombre_usuario`='" . getNombreUsuario() . "'";
+    $query = "SELECT id FROM `puntua` WHERE `id_producto`='" . $id . "' AND `nombre_usuario`='" . getNombreUsuario() . "'";
     $result = consulta($query);
-    return $result[0][0];
+    return $result;
 }
 
-function puntuar($idProducto,$puntuacion) {
-    $sql = 'INSERT INTO `puntua` (`id`, `id_producto`, `nombre_usuario`, `puntuacion`) VALUES (NULL, "' . $idProducto . '" , "' . getNombreUsuario() . '", "' . $puntuacion . '")';
+function puntuar($idProducto, $puntuacion) {
+    $id = getUsuarioPuntua($idProducto);
+    if (isset($id[0][0])) {
+        $sql = 'UPDATE `puntua` SET `puntuacion`="' . $puntuacion . '" WHERE `id`=' . $id[0][0];
+    } else
+        $sql = 'INSERT INTO `puntua` (`id`, `id_producto`, `nombre_usuario`, `puntuacion`) VALUES (NULL, "' . $idProducto . '" , "' . getNombreUsuario() . '", "' . $puntuacion . '")';
     return consulta($sql);
 }
