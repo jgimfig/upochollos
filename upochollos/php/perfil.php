@@ -39,7 +39,7 @@ if (getNombreUsuario() == "") {
         <!--FUNCIONES E INTERACCIONES JS ESPECÍFICAS DEL PERFIL-->
         <script src="../js/tabsPerfil.js" type="text/javascript"></script>
         <script src="../js/comprobacionProducto.js" type="text/javascript"></script>
-
+        <script src="../js/comprobacionCupon.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
                 $("#divCupones").click(function () {

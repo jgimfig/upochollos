@@ -42,11 +42,11 @@ if (isset($_GET['eliminar'])) {
                 <h2>Gestión de categorias</h2>
                 <form name="fcategoria" method="POST" action="crud.php">
                     <p>Nombre Categoria:</p>
-                    <input class="input" type="text" name="ncategoria" id="ncategoria"/>
+                    <input class="input" type="text" name="ncategoria" id="ncategoria" required/>
                     <p>Color Borde:</p>
-                    <input type="color" id="icolorBorde" name="colorBorde"/></br></br>
+                    <input type="color" id="icolorBorde" name="colorBorde" required/></br></br>
                     <p>Color Fondo:</p>
-                    <input type="color" id="icolorFondo" name="colorFondo"/></br></br>
+                    <input type="color" id="icolorFondo" name="colorFondo" required/></br></br>
                     <input class="enviar" id="crear" name="modificarCategoria" type="submit" value="Crear/Editar"/>
                 </form>
             </div>

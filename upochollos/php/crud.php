@@ -11,7 +11,7 @@ if (isset($_POST["btnCrear"])) {
 
         if ($nombre !== false && $descripcion !== false && $enlace !== false) {
             $nombreImagen = basename($_FILES["imagenInput"]["name"]);
-            if (registrarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen)) {
+            if (registrarProducto(trim($nombre),trim($descripcion),trim($enlace),trim($_POST['precioOriginalInput']),trim($_POST['precioDescuentoInput']),trim($_POST['fechaVencimientoInput']),$_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen)) {
                 $target_dir = "../img/fotos/";
                 $target_file = $target_dir . basename($_FILES["imagenInput"]["name"]);
                 if (move_uploaded_file($_FILES['imagenInput']['tmp_name'], $target_file)) {
@@ -50,7 +50,7 @@ if (isset($_POST["btnModificar"])) {
             $nombreImagen = basename($_FILES["imagenInput"]["name"]);
             $nombreImagenAntiguo = getImagenProducto($_POST['id']);
             if ($nombreImagen == "") {//No cambiar foto
-                if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagenAntiguo[0], $_POST['id'])) {
+                if (modificarProducto(trim($nombre), trim($descripcion),trim($enlace),trim($_POST['precioOriginalInput']),trim($_POST['precioDescuentoInput']),trim($_POST['fechaVencimientoInput']),trim($_POST['tiendaInput']),trim($_POST['categoriaInput']),$nombreImagenAntiguo[0], $_POST['id'])) {
                     header('location: principal.php');
                 } else {
                     echo " <script type='text/javascript'></script>";
@@ -62,7 +62,7 @@ if (isset($_POST["btnModificar"])) {
                 if (!move_uploaded_file($_FILES['imagenInput']['tmp_name'], $target_file)) {
                     echo "La imagen no se ha guardado correctamente.";
                 } else {
-                    if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen, $_POST['id'])) {
+                    if (modificarProducto(trim($nombre),trim($descripcion),trim($enlace),trim($_POST['precioOriginalInput']),trim($_POST['precioDescuentoInput']), $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen, $_POST['id'])) {
                         header('location: principal.php');
                     } else {
                         echo "<script>
@@ -88,11 +88,15 @@ if (isset($_POST['eliminarCategoria'])) {
 }
 
 if (isset($_POST['modificarCategoria'])) {
-    if (modificarCategoria($_POST["ncategoria"], $_POST["colorBorde"], $_POST["colorFondo"])) {
-        header('location: categoria.php');
-    } else {
-        echo "<script> alert('No se ha podido modificar la categoria correctamente'); window.location.href='./categoria.php'; </script>";
-    }
+    if(isset($_POST['ncategoria'])&& trim($_POST['ncategoria'])!="") {
+        if (modificarCategoria(trim($_POST["ncategoria"]), $_POST["colorBorde"], $_POST["colorFondo"])) {
+            header('location: categoria.php');
+        } else {
+            echo "<script> alert('No se ha podido modificar la categoria correctamente'); window.location.href='./categoria.php'; </script>";
+        }
+    }else {
+            echo "<script> alert('No está permitido poner campos vacios.'); window.location.href='./categoria.php'; </script>";
+        }
 }
 if (isset($_POST["btnCrearCupon"])) {
     if (isset($_POST['cnombre']) && isset($_POST['ccodigo']) && isset($_POST['cFechaPublicacion']) && isset($_POST['cFechaVencimiento']) && isset($_POST['cdescripcion'])) {
@@ -101,7 +105,7 @@ if (isset($_POST["btnCrearCupon"])) {
         $descripcion = filter_var($_POST['cdescripcion'], FILTER_SANITIZE_STRING);
         if ($nombre !== false && $descripcion !== false && $codigo !== false) {
             if (isset($_POST['cId'])) {
-                if (registrarCupon($_POST['cId'], $nombre, $codigo, $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'], $descripcion)) {
+                if (registrarCupon($_POST['cId'],trim($nombre),trim($codigo), $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'],trim($descripcion))) {
                     header('location: principal.php');
                 } else {
                     echo "<script>
@@ -110,7 +114,7 @@ if (isset($_POST["btnCrearCupon"])) {
                     </script>";
                 }
             } else {
-                if (registrarCupon(NULL, $nombre, $codigo, $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'], $descripcion)) {
+                if (registrarCupon(NULL,trim($nombre),trim($codigo), $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'],trim($descripcion))) {
                     header('location: principal.php');
                 } else {
                     echo "<script>
