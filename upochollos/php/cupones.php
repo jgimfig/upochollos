@@ -78,7 +78,7 @@ if (isset($_GET['eliminar'])) {
                 </table>
             </div>
         </main>
-                        <?php
+        <?php
 //INCLUIMOS EL FOOTER
         include './footer.php';
         ?>

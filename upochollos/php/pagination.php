@@ -1,4 +1,5 @@
 <?php
+
 // FUNCIONES COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
 ?>
@@ -15,12 +16,12 @@ if (isset($_POST["page"])) {
 $start_from = ($page - 1) * $record_per_page;
 $row = consulta("SELECT * FROM `producto` ORDER BY `fecha_publicado` DESC LIMIT $start_from, $record_per_page");
 $output = "<article class='marco'>";
-for($var=0;$var<count($row);$var++){
-    $cm = consulta("SELECT COUNT(*) FROM `comentario` where `id_producto`='".$row[$var][0]."'");
+for ($var = 0; $var < count($row); $var++) {
+    $cm = consulta("SELECT COUNT(*) FROM `comentario` where `id_producto`='" . $row[$var][0] . "'");
     $output .= '  
             <section class="grid-container">
               <div class="fotoG">
-                <img class="fotoGrid" src="../img/fotos/'.$row[$var][8].'" alt="'.$row[$var][3].'">
+                <img class="fotoGrid" src="../img/fotos/' . $row[$var][8] . '" alt="' . $row[$var][3] . '">
               </div>
               <div class="titulo">
                <strong>' . $row[$var][3] . '</strong>
@@ -30,7 +31,7 @@ for($var=0;$var<count($row);$var++){
                <span>' . $row[$var][10] . '</span>
               </div>
               <div class="precioAntes">
-               <span>' . $row[$var][2]  . '</span>
+               <span>' . $row[$var][2] . '</span>
               </div>
               <div class="precioAhora">
                     <span>' . $row[$var][6] . '</span>
@@ -65,7 +66,7 @@ for($var=0;$var<count($row);$var++){
 
 $output .= '</article><br /><div align = "center">';
 
-$page_query= consulta("SELECT * FROM `producto` ORDER BY id DESC");
+$page_query = consulta("SELECT * FROM `producto` ORDER BY id DESC");
 $total_records = count($page_query);
 $total_pages = ceil($total_records / $record_per_page);
 for ($i = 1; $i <= $total_pages; $i++) {

@@ -21,6 +21,3 @@ include_once 'funciones.php';
     }
     ?>
 </aside>
-<!--
-echo  '<div class="col-sm-4 asideCategoria" onclick="filtrado("'.$categoria[$i][0].'")><a class="asideCategoria" style="background-color:"' . $categoria[$i][2] . '"; border: 2px solid "'. $categoria[$i][1].'">'. $categoria[$i][0] .'</a></div>';
--->

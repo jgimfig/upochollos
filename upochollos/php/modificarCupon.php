@@ -48,13 +48,5 @@ $var = getCupon($_POST['id']);
                 <input class="btnProducto2" id="crear" name="btnCrearCupon" type="submit" value="Modificar"/>
             </form>
         </div>		
-
-        <!--NCLUIMOS EL ASIDE CON LA PUBLICIDAD Y UN BOTÓN DE SUBIR A LA CABECERA -->
-        <?php
-        //include './php/aside.php';
-        //include './php/subir.php';
-        //INCLUIMOS EL FOOTER
-        //include './php/footer.php';
-        ?>
     </body>
 </html>
