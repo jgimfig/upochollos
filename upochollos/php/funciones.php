@@ -210,3 +210,13 @@ function eliminarCupon($id) {
     return consulta($query);
 }
 
+function getPuntuaciones($id) {
+    $query = "SELECT * FROM `puntua` WHERE `id_producto`='".$id."'";
+    $result= consulta($query);
+    $sum=0;
+    for ($index = 0; $index < count($result); $index++) {
+        $sum+=$result[$index][3];
+    }
+    $total=$sum/$index;
+    return $total;
+}

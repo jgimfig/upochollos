@@ -2,6 +2,8 @@
 // FUNCIONES COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
 session_start();
+//$_SESSION['filtro']=$_POST['filtro'];
+$_SESSION['filtro']="Ana-lytics";
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +33,10 @@ session_start();
         <script>
             $(document).ready(function () {
                 load_data();
-                load_Cupones();
                 function load_data(page)
                 {
                     $.ajax({
-                        url: "pagination.php",
+                        url: "paginationFiltrada.php",
                         method: "POST",
                         data: {page: page},
                         success: function (data) {
@@ -43,38 +44,11 @@ session_start();
                         }
                     })
                 }
-                function load_Cupones(page)
-                {
-                    $.ajax({
-                        url: "paginationCupones.php",
-                        method: "POST",
-                        data: {page: page},
-                        success: function (data) {
-                            $('#paginationCupones_data').html(data);
-                        }
-                    })
-                }
-                function filtrado(filtro)
-                {
-                    alert("HOla");
-//                    $('#formDiv').append('<form id="target" action="/principalFiltrado.php" method="post">');
-//                    var s='<input type="hidden" name="filtro" value="'+filtro+'">';
-//                    $('#formDiv').append(s);
-//                    $('#formDiv').append('<input id="target" type="submit" value="">');
-//                    $('#formDiv').append('</form>');
-//                    $( "#target" ).submit();
-                }
-
-                $(document).on('click', '.pagi    nation_link', function () {
+                $(document).on('click', '.pagination_link', function () {
                     var page = $(this).attr("id");
                     load_data(page);
                 });
-                $(document).on('click', '.paginationCupon_link', function () {
-                    var page = $(this).attr("id");
-                    load_Cupones(page);
-                });
                 document.getElementById("defaultOpen").click();
-                document.getElementById("cupon").hide();
             });
             function openPage(pageName, elmnt, color) {
                 var i, tabcontent, tablinks;
@@ -89,41 +63,20 @@ session_start();
                 document.getElementById(pageName).style.display = "block";
                 elmnt.style.backgroundColor = color;
             }
-            //            function open(page,element) {
-//                openPage(page, element, 'orange');
-//                $("#chollo").toggle();
-//                $("#cupon").toggle();
-//            }
         </script>
     </head>
     <body>
 
         <?php
-//INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
+        //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include './header.php';
         ?>
-
-        <div class="grid">
-            <?php
-            include './aside.php';
-            ?>
-            <div class="btnChollo">
-                <button class="tablink" onclick="openPage('chollo', this, 'orange')" id="defaultOpen">Chollos</button>
-            </div>
-            <div class="btnCupon">
-                <button class="tablink" onclick="openPage('cupon', this, 'orange')">Cupones</button>
-            </div>
-            <div class="nothing"></div>
             <div class="tabcontent producto tab" id="chollo">
                 <div class="table-responsive" id="pagination_data"></div>
             </div>
-            <div class="tabcontent producto tab" id="cupon">
-                <div class="table-responsive" id="paginationCupones_data"></div> 
-            </div>
         </div>
-        <div id="formDiv"></div>
         <?php
-//INCLUIMOS EL FOOTER
+        //INCLUIMOS EL FOOTER
         include './footer.php';
         ?>
     </body>

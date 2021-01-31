@@ -1,6 +1,7 @@
 <?php
 // FUNCIONES COMUNES A TODO EL PROYECTO
 include_once 'funciones.php';
+session_start();
 ?>
 <?php
 
@@ -12,11 +13,12 @@ if (isset($_POST["page"])) {
 } else {
     $page = 1;
 }
+$n=$_SESSION['filtro'];
 $start_from = ($page - 1) * $record_per_page;
-$row = consulta("SELECT * FROM `producto` ORDER BY `fecha_publicado` DESC LIMIT $start_from, $record_per_page");
+$row = consulta("SELECT * FROM `producto` WHERE `nombre_categoria`='".$n."' OR `nombre_tienda`='".$n."' ORDER BY `fecha_publicado` DESC LIMIT $start_from, $record_per_page");
+
 $output = "<article class='marco'>";
 for($var=0;$var<count($row);$var++){
-    $cm = consulta("SELECT COUNT(*) FROM `comentario` where `id_producto`='".$row[$var][0]."'");
     $output .= '  
             <section class="grid-container">
               <div class="fotoG">
@@ -48,9 +50,6 @@ for($var=0;$var<count($row);$var++){
                 <span>
                     <i class="fas fa-user-edit"></i>
                     <span>' . $row[$var][9] . '</span>
-                    <span>&emsp;</span>
-                    <i class="fas fa-comment"></i>
-                    <span>' . $cm[0][0] . '</span>
                 </span>
               </div>
               <div class="button">                  

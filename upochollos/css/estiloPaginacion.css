@@ -25,9 +25,30 @@ section {
         "fotoG descripcion descripcion descripcion"
         "fotoG autor autor button";
     -webkit-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
--moz-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
 }
+.grid-container2 {
+    padding: 10px;
+    margin:20px;
+    display: grid;
+    grid-template-columns: 30% 22% 22% 20%;
+    grid-template-rows: 10% 15% 50% 20%;
+    gap: 10px 10px;
+    grid-template-areas:
+        "fotoG titulo titulo rating"
+        "fotoG precioAntes precioAhora ct"
+        "fotoG descripcion descripcion fechas"
+        "fotoG autor autor button";
+        -webkit-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
+}
+
+.fechas { grid-area: fechas; }
+.rating { grid-area: rating; }
+.ct { grid-area: ct; }
+
 .fotoG { grid-area: fotoG; }
 .descripcion { grid-area: descripcion;  font-size: 17px;  font-family: Arial, Helvetica, sans-serif;}
 .autor { grid-area: autor; }
@@ -35,19 +56,19 @@ box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.75);
 .precioAntes { grid-area: precioAntes; font-size: 17px; text-decoration: line-through; color: grey;}
 .precioAhora { grid-area: precioAhora; font-size: 17px; color: orangered;font-weight: bold;}
 .precioAhora::before {
-  font-size: 17px;font-weight: bold;color:black;
-  content: "Precio en oferta:  ";
+    font-size: 17px;font-weight: bold;color:black;
+    content: "Precio en oferta:  ";
 }
 .precioAhora::after {
-  font-size: 17px; color: orangered;font-weight: bold;
-  content: " €";
+    font-size: 17px; color: orangered;font-weight: bold;
+    content: " €";
 }
 
 .precioAntes::before {
-  content: "Precio:  ";
+    content: "Precio:  ";
 }
 .precioAntes::after {
-  content: " €";
+    content: " €";
 }
 
 .tienda { grid-area: tienda; }
