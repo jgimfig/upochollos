@@ -82,7 +82,8 @@ if(isset($_POST['usuario']) && isset($_POST['contrasena']) && isset($_POST['emai
                  * Si pudo efectuarse el registro, se enviará al usuario 
                  * a la pagina de login
                  */
-                if(registrarUsuario($us, $pass, $em, 'usuario_estandar')){ 
+                if(registrarUsuario($us, $pass, $em, ''
+                        . 'estandar')){ 
                     header('location: login.php'); 
                 } else{
                      echo " <script type='text/javascript'>"

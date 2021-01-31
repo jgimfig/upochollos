@@ -102,6 +102,10 @@ function agregaImagen($nombre){
         </main>
         <?php include 'footer.php'; ?>
     </body>
+                    <?php
+//INCLUIMOS EL FOOTER
+        include './footer.php';
+        ?>
 </html>
 
 

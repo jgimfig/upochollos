@@ -20,6 +20,7 @@ if (!isset($_GET["idCupon"])) {
         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
         <link href="../css/estiloClipboard.css" rel="stylesheet" type="text/css"/>
         <link href="../css/estiloPerfil.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/estiloPaginacion.css" rel="stylesheet" type="text/css"/>
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
         <?php include 'libreriasJS.php'; ?>
 
@@ -27,6 +28,7 @@ if (!isset($_GET["idCupon"])) {
         <script type='text/javascript' src='../js/comprobacionProducto.js'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <script>
             function cpy() {
                 /* Get the text field */
@@ -71,25 +73,27 @@ if (!isset($_GET["idCupon"])) {
                 </div>
             </div>';
         }
-        echo '<div>
+        echo '<div  class="grid-container3">
+              <div class="tituloC">
                <strong>' . $row[0][1] . '</strong>
               </div>
-              <div>
+              <div class="descripcionC">
                     <p>' . $row[0][5] . '</p>
               </div>
-              <div>
-                    <p>' . $row[0][3] . '</p>
+              <div class="fechaC">
+                    <p><b>Fecha de publicación</b>: ' . $row[0][3] . '</p>
+                    <p><b>Fecha de fin</b>: ' . $row[0][4] . '</p>
               </div>
-              <div>
-                    <p>' . $row[0][4] . '</p>
+              <div class="autorC">
+              <i class="fas fa-user-edit"></i>
+                    <span>' . $row[0][6] . '</span>
               </div>
-              <div>
-                    <p>' . $row[0][6] . '</p>
-              </div>
-              <div>
+              <div class="boton botonC">                  
                     <input type="text" value=' . $row[0][2] . ' id="input" disabled>
                     <button onclick="cpy()">Copy text</button>  
               </div>
+            </div>
+              
             ';
         ?>     
     </body>  

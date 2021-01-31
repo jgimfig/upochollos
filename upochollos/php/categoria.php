@@ -4,9 +4,9 @@ include_once 'funciones.php';
 if (!getAdministrador())
     header('location: ./principal.php');
 
-if(isset($_GET['eliminar'])){
-    $query="delete from categoria where nombre='".$_GET['ncategoria']."'";
-    if(!consulta($query))
+if (isset($_GET['eliminar'])) {
+    $query = "delete from categoria where nombre='" . $_GET['ncategoria'] . "'";
+    if (!consulta($query))
         echo "<script>alert('No se puede eliminar ya que hay un producto asociado a dicha categoria');</script>";
 }
 ?>
@@ -67,8 +67,8 @@ if(isset($_GET['eliminar'])){
                         for ($i = 0; $i < count($categoria); $i++) {
                             echo "<tr>"
                             . "<td>" . $categoria[$i][0] . "</td>"
-                            . "<td class='color' style='color:". $categoria[$i][1] ."'>" . $categoria[$i][1] . "</td>"
-                            . "<td class='color' style='color:". $categoria[$i][2] ."'>" . $categoria[$i][2] . "</td>"
+                            . "<td class='color' style='color:" . $categoria[$i][1] . "'>" . $categoria[$i][1] . "</td>"
+                            . "<td class='color' style='color:" . $categoria[$i][2] . "'>" . $categoria[$i][2] . "</td>"
                             . "<td><button class='enviar' onclick=editar(this)>Editar</button></td>";
                             ?>
                         <form action="crud.php" method="post" >
@@ -84,6 +84,10 @@ if(isset($_GET['eliminar'])){
             </div>
         </main>
     </body>
+                    <?php
+//INCLUIMOS EL FOOTER
+        include './footer.php';
+        ?>
 </html>
 
 

@@ -13,7 +13,6 @@
 .nothing { grid-area: nothing;background-color: #555;  }
 .aside { grid-area: aside; }
 .producto { grid-area: producto; }
-
 .btnChollo { grid-area: btnChollo; }
 .btnCupon { grid-area: btnCupon; }
 .nothing { grid-area: nothing; }
@@ -35,10 +34,14 @@
 }
 .asideCategoria{
     text-decoration: none;
-    width: 100%;
     margin: 10px;
-    border-radius: 25px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1vw;
+}
+.asideCategoria p{
+    font-size: 
 }
 .divCategoria{
     height: 8%;

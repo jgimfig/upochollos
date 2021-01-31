@@ -21,7 +21,10 @@ if (isset($_POST["btnCrear"])) {
                     $uploadOk = 0;
                 }
             } else {
-                echo " <script type='text/javascript'></script>";
+                echo "<script>
+                    alert('No se ha podido crear el producto correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
             }
         }
     }
@@ -62,7 +65,10 @@ if (isset($_POST["btnModificar"])) {
                     if (modificarProducto($nombre, $descripcion, $enlace, $_POST['precioOriginalInput'], $_POST['precioDescuentoInput'], $_POST['fechaVencimientoInput'], $_POST['tiendaInput'], $_POST['categoriaInput'], $nombreImagen, $_POST['id'])) {
                         header('location: principal.php');
                     } else {
-                        echo " <script type='text/javascript'></script>";
+                        echo "<script>
+                    alert('No se ha podido modificar el producto correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
                     }
                 }
             }
@@ -74,7 +80,10 @@ if (isset($_POST['eliminarCategoria'])) {
     if (eliminarCategoria($_POST["ncategoria"])) {
         header('location: categoria.php');
     } else {
-        echo " <script type='text/javascript'></script>";
+        echo "<script>
+                    alert('No se ha podido eliminar la categoria correctamente.Puede que esté asociada a un producto');
+                    window.location.href='./categoria.php';
+                    </script>";
     }
 }
 
@@ -82,7 +91,7 @@ if (isset($_POST['modificarCategoria'])) {
     if (modificarCategoria($_POST["ncategoria"], $_POST["colorBorde"], $_POST["colorFondo"])) {
         header('location: categoria.php');
     } else {
-        echo " <script type='text/javascript'></script>";
+        echo "<script> alert('No se ha podido modificar la categoria correctamente'); window.location.href='./categoria.php'; </script>";
     }
 }
 if (isset($_POST["btnCrearCupon"])) {
@@ -95,13 +104,19 @@ if (isset($_POST["btnCrearCupon"])) {
                 if (registrarCupon($_POST['cId'], $nombre, $codigo, $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'], $descripcion)) {
                     header('location: principal.php');
                 } else {
-                    echo " <script type='text/javascript'></script>";
+                    echo "<script>
+                    alert('No se ha podido añadir el cupón correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
                 }
             } else {
                 if (registrarCupon(NULL, $nombre, $codigo, $_POST['cFechaPublicacion'], $_POST['cFechaVencimiento'], $descripcion)) {
                     header('location: principal.php');
                 } else {
-                    echo " <script type='text/javascript'></script>";
+                    echo "<script>
+                    alert('No se ha podido añadir el cupón correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
                 }
             }
         }
@@ -114,7 +129,38 @@ if (isset($_POST['eliminarCupon'])) {
         } else
             header('location: principal.php');
     } else {
-        echo " <script type='text/javascript'></script>";
+        echo "<script>
+                    alert('No se ha podido eliminar el cupón');
+                    window.location.href='./principal.php';
+                    </script>";
+    }
+}
+
+if (isset($_POST['rating'])) {
+    if (getUsuarioPuntua($_POST["idProducto"]) == 0) {
+        if (getNombreUsuario() != "") {
+            if (puntuar($_POST["idProducto"], $_POST["rating"])) {
+                echo "<script>
+                    alert('Se ha guardado la puntuacion correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
+            } else {
+                echo "<script>
+                    alert('No se ha guardado la puntuacion correctamente');
+                    window.location.href='./principal.php';
+                    </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Debes de estar logueado para puntuar.');
+                    window.location.href='./principal.php';
+                    </script>";
+        }
+    } else {
+        echo "<script>
+                alert('Solo se puede puntuar un producto 1 vez.');
+                window.location.href='./principal.php';
+                </script>";
     }
 }
 ?>

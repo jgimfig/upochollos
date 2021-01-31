@@ -34,7 +34,7 @@ if (!getAdministrador())
         </script>
     </head>
     <body>
-        <main>
+        <main style="border-top: solid rgba(248,181,0,1) 1px">
             <div class="container">
                 <table id="responsive-table" class="large-only" cellspacing="0">
                     <tbody>
@@ -81,6 +81,10 @@ if (!getAdministrador())
             </div>
         </main>
     </body>
+                    <?php
+//INCLUIMOS EL FOOTER
+        include './footer.php';
+        ?>
 </html>
 
 

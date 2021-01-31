@@ -9,7 +9,7 @@ if (getNombreUsuario() == "") {
         <form name="fcategoria" method="POST" action="crud.php">
             <p>Nombre Cupón:</p>
             <input type="text" class="ip4" name="cnombre" id="nombre"  required/>
-            <p>Código Cupon:</p>
+            <p>Código Cupón:</p>
             <input type="text" class="ip4" name="ccodigo" id="codigo"  required/>
             <p>Fecha publicación:</p>
             <input type="date" name="cFechaPublicacion" id="FechaPublicacion" value=<?php echo "'" . date('Y-m-d') . "'"; ?> min=<?php echo "'" . date('Y-m-d') . "'"; ?>"/>
