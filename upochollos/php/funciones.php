@@ -210,3 +210,27 @@ function eliminarCupon($id) {
     return consulta($query);
 }
 
+function getPuntuaciones($id) {
+    $query = "SELECT * FROM `puntua` WHERE `id_producto`='" . $id . "'";
+    $result = consulta($query);
+    $sum = 0;
+    for ($index = 0; $index < count($result); $index++) {
+        $sum += $result[$index][3];
+    }
+    if ($index != 0) {
+        $total = $sum / $index;
+    } else
+        $total = 0;
+    return $total;
+}
+
+function getUsuarioPuntua($id) {
+    $query = "SELECT COUNT(*) FROM `puntua` WHERE `id_producto`='" . $id . "' AND `nombre_usuario`='" . getNombreUsuario() . "'";
+    $result = consulta($query);
+    return $result[0][0];
+}
+
+function puntuar($idProducto,$puntuacion) {
+    $sql = 'INSERT INTO `puntua` (`id`, `id_producto`, `nombre_usuario`, `puntuacion`) VALUES (NULL, "' . $idProducto . '" , "' . getNombreUsuario() . '", "' . $puntuacion . '")';
+    return consulta($sql);
+}
