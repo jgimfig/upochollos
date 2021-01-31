@@ -109,6 +109,9 @@ session_start();
             <div class="tabcontent producto tab" id="cupon">
                 <div class="table-responsive" id="paginationCupones_data"></div> 
             </div>
+            <?php
+            include "./anuncio.php"
+            ?>
         </div>
         <div id="formDiv"></div>
         <?php

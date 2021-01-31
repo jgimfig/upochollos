@@ -78,11 +78,11 @@ if (isset($_GET['eliminar'])) {
                 </table>
             </div>
         </main>
-        <?php
-//INCLUIMOS EL FOOTER
+    </body>
+         <?php
+        //INCLUIMOS EL FOOTER
         include './footer.php';
         ?>
-    </body>
 </html>
 
 

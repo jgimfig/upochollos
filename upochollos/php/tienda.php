@@ -99,7 +99,6 @@ function agregaImagen($nombre){
                 </table>
             </div>
         </main>
-        <?php include 'footer.php'; ?>
     </body>
                     <?php
 //INCLUIMOS EL FOOTER

@@ -64,9 +64,8 @@ if (isset($_POST['iniciarSesion'])) {
         <!--TARJETA PRINCIPAL: SE INCLUYE LOGOTIPO Y FORMULARIO-->
         <div id='ventanaLogin'>
 
-            <!--LOGOTIPO DE LA MARCA: 'NEWZ'-->
-            <figure><img src="../img/logo.png" alt='logo'/></figure>
-
+            <!--LOGOTIPO DE LA MARCA:-->
+            <figure><a href="./principal.php"><img src="../img/logo.png" alt='logo'/></a></figure>
             <!-- FORMULARIO DE INICIO DE SESION -->
             <form action="../php/login.php" method="POST" onsubmit="return comprobarLogin()">
 
