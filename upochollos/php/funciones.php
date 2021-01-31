@@ -234,3 +234,18 @@ function puntuar($idProducto,$puntuacion) {
     $sql = 'INSERT INTO `puntua` (`id`, `id_producto`, `nombre_usuario`, `puntuacion`) VALUES (NULL, "' . $idProducto . '" , "' . getNombreUsuario() . '", "' . $puntuacion . '")';
     return consulta($sql);
 }
+
+function verificaPass($pass){ 
+    if (session_status() != PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    $sql = "SELECT * FROM usuario WHERE usuario='".$_SESSION['usuario']."'";
+    $resul = consulta($sql);
+    if ($resul && count($resul) > 0) {
+        $passw = password_verify($pass, $resul[0][2]);
+        if($passw)
+            return true;
+        else
+            return false;
+    }
+}

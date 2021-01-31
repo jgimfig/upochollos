@@ -57,3 +57,7 @@ table .enviar{
 .restablece{
     float: right;
 }
+
+#anuncios img{
+    width: 100%;
+}

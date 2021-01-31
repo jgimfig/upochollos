@@ -1,0 +1,72 @@
+main{
+    border-top: solid rgba(248,181,0,1) 1px;
+    
+}
+
+#forms{
+    grid-template-areas: "perfil correo contrasenya ";
+    display: grid;
+    grid-template-columns: 33%;
+    width: 70%;
+    margin-left: 20%;
+}
+
+#top{
+    grid-area: top;
+    text-align: center;
+}
+
+#foto{
+    grid-area: perfil;
+    text-align: center;
+    border: solid rgba(248,181,0,1) 1px;
+    border-radius: 10px;
+    width: 75%;
+    text-align: center;
+}
+
+#correo{
+    grid-area: correo;
+    text-align: center;
+    border: solid rgba(248,181,0,1) 1px;
+    border-radius: 10px;
+    width: 75%;
+}
+
+#contrasenya{
+    grid-area: contrasenya;
+    text-align: center;
+    border: solid rgba(248,181,0,1) 1px;
+    border-radius: 10px;
+    width: 75%;
+}
+
+#enviar{
+    background-color: rgba(248,181,0,1) ;
+    border-radius: 5px;
+    width: 40%;
+}
+
+#foto img{
+    width: 30%;
+    border-radius: 90%;
+}
+
+.input{
+    border-radius: 5px;
+}
+
+#eliminar{
+    background-color: rgba(248,181,0,1) ;
+    border-radius: 5px;
+    width: 15%;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+p{
+    font-weight: bold;
+}
