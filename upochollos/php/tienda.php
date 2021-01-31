@@ -49,8 +49,7 @@ function agregaImagen($nombre){
         <link rel="stylesheet" type="text/css" href="../css/estiloPagina.css">
 
         <!--INCLUSIÓN DE LIBRERIAS JS COMUNES A TODO EL PROYECTO-->
-        <?php include 'libreriasJS.php';
-        include 'header.php'; ?>
+        <?php include 'libreriasJS.php'; include 'header.php'; ?>
 
         <!--FUNCIONES E INTERACCIONES JS ESPECIFICAS DE LA PAGINA DE USUARIO-->
         <script type='text/javascript' src='../js/comprobacionLogin.js'></script>

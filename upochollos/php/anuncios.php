@@ -47,18 +47,20 @@ if(isset($_POST['crearA'])){
             $actualiza="update anuncio set titulo='".$titulo."',fecha_inicio='".$fecha_inicio."',cif_patrocinador='".$cif_patrocinador."',fecha_fin='".$fecha_fin."',descripcion='".$descripcion."',contenido_multimedia='".$_FILES['multimedia']['name']."',cuantia='".$cuantia."' where id='".$_POST['editar']."'";
             if(!consulta($actualiza)){
                 echo "<script> alert('ERROR: El cif no corresponde con ningún patrocinador existente');</script>";
-            }
+            }else
+                agregaImagen();
         }else{      //Si no existe el anuncio lo creamos
             $insertar="insert into anuncio (titulo,fecha_inicio,cif_patrocinador,fecha_fin,descripcion,contenido_multimedia,cuantia) values('".$titulo."','".$fecha_inicio."','".$cif_patrocinador."','".$fecha_fin."','".$descripcion."','".$_FILES['multimedia']['name']."','".$cuantia."')";
             if(!consulta($insertar)){
                 echo "<script> alert('ERROR: El cif no corresponde con ningún patrocinador existente');</script>";
-            }
+            }else
+                agregaImagen();
         }
     }else
         echo "<script> alert('ERROR: Todos los campos deben estar rellenos');</script>";
 }
 
-function agregaImagen($nombre){
+function agregaImagen(){
     $tmp=$_FILES['multimedia']['tmp_name'];
     move_uploaded_file($tmp, "../img/anuncios/".$_FILES['multimedia']['name']);
 }
@@ -93,7 +95,7 @@ function muestraAnuncios() {
         . "<td>" . $anuncios[$i][4] . "</td>"
         . "<td>" . $anuncios[$i][5] . "</td>"
         . "<td>" . $anuncios[$i][7] . "</td>"
-        . "<td><img src='../img/anuncios/ ".$anuncios[$i][6]."'/></td>"
+        . "<td><img src='../img/anuncios/".$anuncios[$i][6]."'/></td>"
         . "<td><button class='enviar' onclick=editarAnuncio(this)>Editar</button></td>";
         ?>
         <form action="anuncios.php" method="GET" >
