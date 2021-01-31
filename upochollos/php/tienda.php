@@ -16,7 +16,6 @@ if(isset($_POST['crear'])){
     if($nombre!="" && $_FILES['logo']['error']==0){        
         if(consulta($query)[0][0]>0){ //Si ya existe esa tienda actualizamos el logo
             $actualiza="update tienda set logo='".$_FILES['logo']['name']."' where nombre='".$nombre."'";
-            echo $actualiza;
             consulta($actualiza);
             agregaImagen($nombre);
         }else{      //Si no existe la tienda la creamos e insertamos el logo
@@ -101,6 +100,7 @@ function agregaImagen($nombre){
                 </table>
             </div>
         </main>
+        <?php include 'footer.php'; ?>
     </body>
                     <?php
 //INCLUIMOS EL FOOTER

@@ -1,0 +1,59 @@
+td{
+    width: 100px;
+    text-align: center;
+}
+
+main{    
+    border-top: solid rgba(248,181,0,1) 1px;
+}
+
+#patrocinadores{
+    grid-template-areas: " crear mostrar ";
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#crear{
+    margin-top: 4%;
+    grid-area: crear;
+    text-align: center;
+}
+
+#mostrar{
+    margin-top: 6%;
+    border-left: solid rgba(248,181,0,1) 1px;
+    grid-area: mostrar;
+    padding-left: 30%;
+}
+
+#mostrar table{
+    margin-right: 0px;
+}
+
+#anuncios{
+   justify-content: center;
+   text-align: center;
+}
+
+#tablaAnuncios{
+    padding-left: 23%;
+    margin-bottom: 10%;
+}
+
+.input{
+    border-radius: 5px;
+}
+
+.enviar{
+    background-color: rgba(248,181,0,1) ;
+    border-radius: 5px;
+    width: 10%;
+}
+
+table .enviar{
+   width: 100%; 
+}
+
+.restablece{
+    float: right;
+}
