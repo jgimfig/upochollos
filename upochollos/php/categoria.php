@@ -84,10 +84,10 @@ if (isset($_GET['eliminar'])) {
             </div>
         </main>
     </body>
-                    <?php
+    <?php
 //INCLUIMOS EL FOOTER
-        include './footer.php';
-        ?>
+    include './footer.php';
+    ?>
 </html>
 
 

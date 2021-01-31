@@ -78,10 +78,10 @@ session_start();
                 document.getElementById(pageName).style.display = "block";
                 elmnt.style.backgroundColor = color;
             }
-            function filtrado(filtro){
-                var s='<input type="hidden" name="filtrado" value="'+filtro+'">';
-                $('#formDiv').html('<form id="target" action="./principalFiltrado.php" method="get">'+s+'<input id="target" type="submit" value=""></form>');
-                $( "#target" ).submit();
+            function filtrado(filtro) {
+                var s = '<input type="hidden" name="filtrado" value="' + filtro + '">';
+                $('#formDiv').html('<form id="target" action="./principalFiltrado.php" method="get">' + s + '<input id="target" type="submit" value=""></form>');
+                $("#target").submit();
             }
         </script>
     </head>
