@@ -5,7 +5,6 @@ include_once 'funciones.php';
 
 <!--Validación de inicio de sesión en el servidor-->
 <?php
-
 $error = false;
 
 if (isset($_POST['iniciarSesion'])) {

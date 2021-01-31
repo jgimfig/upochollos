@@ -106,11 +106,5 @@ if (getNombreUsuario() == "" && !isset($_POST["idCupon"])) {
             </div>    
         </form>				
         <!--NCLUIMOS EL ASIDE CON LA PUBLICIDAD Y UN BOTÓN DE SUBIR A LA CABECERA -->
-        <?php
-        //include './php/aside.php';
-        //include './php/subir.php';
-        //INCLUIMOS EL FOOTER
-        //include './php/footer.php';
-        ?>
     </body>
 </html>
