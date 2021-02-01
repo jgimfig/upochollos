@@ -200,9 +200,11 @@ function getCupon($id) {
 }
 
 function registrarCupon($id, $nombre, $codigo, $fechaPublicado, $fechaVencimiento, $descripcion) {
-
-    $sql = 'INSERT INTO `cupon` (`id`, `nombre`, `codigo`, `fecha_publicado`, `fecha_vencimiento`, `descripcion`,`usuario`) VALUES ("' . $id . '", "' . $nombre . '" , "' . $codigo . '", "' . $fechaPublicado . '", "' . $fechaVencimiento . '", "' . $descripcion . '", "' . getNombreUsuario() . '") ON DUPLICATE KEY UPDATE    
-nombre="' . $nombre . '",codigo="' . $codigo . '",fecha_publicado="' . $fechaPublicado . '",fecha_vencimiento="' . $fechaVencimiento . '",descripcion="' . $descripcion . '"';
+    if($id!=NULL){
+        $sql = 'UPDATE `cupon` SET nombre="' . $nombre . '",codigo="' . $codigo . '",fecha_publicado="' . $fechaPublicado . '",fecha_vencimiento="' . $fechaVencimiento . '",descripcion="' . $descripcion . '" WHERE `id`=' . $id;
+    }else{
+        $sql = 'INSERT INTO `cupon` (`id`, `nombre`, `codigo`, `fecha_publicado`, `fecha_vencimiento`, `descripcion`,`usuario`) VALUES (NULL, "' . $nombre . '" , "' . $codigo . '", "' . $fechaPublicado . '", "' . $fechaVencimiento . '", "' . $descripcion . '", "' . getNombreUsuario() . '")';
+    }
     return consulta($sql);
 }
 

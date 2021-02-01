@@ -8,7 +8,7 @@ if (getNombreUsuario() == "") {
 <div align="center" id="cupon" onsubmit="return comprobarCupon();">
     <form name="fcategoria" method="POST" action="crud.php">
         <p>Nombre Cupón:</p>
-        <input type="text" class="ip4" name="cnombre" id="nombre"  required/>
+        <input type="text" class="ip4" name="cnombre" id="nombreC"  required/>
         <p>Código Cupón:</p>
         <input type="text" class="ip4" name="ccodigo" id="codigo"  required/>
         <p>Fecha publicación:</p>
@@ -16,7 +16,7 @@ if (getNombreUsuario() == "") {
         <p>Fecha vencimiento:</p>
         <input type="date" name="cFechaVencimiento" id="FechaVencimiento" value=<?php echo "'" . date('Y-m-d', strtotime("+1 week")) . "'"; ?> min=<?php echo "'" . date('Y-m-d') . "'"; ?>/>
         <p>Descripcion:</p>
-        <input type="text" name="cdescripcion" id="descripcion" class="ip4" required/>
+        <input type="text" name="cdescripcion" id="descripcionC" class="ip4" required/>
         <br><br>
         <input class="btnProducto2" id="crear" name="btnCrearCupon" type="submit" value="Crear"/>
     </form>

@@ -64,7 +64,7 @@ if (getNombreUsuario() == "") {
         //INCLUIMOS EL HEADER y NAV CON INTERACCIÓN COMÚN A TODA LA PAGINA
         include './header.php';
         ?>
-        <div class="gridC">
+        <div class="gridC2">
             <div class="btnChollo" id="divChollo">
                 <button class="tablink" id="btnProducto">Producto</button>
             </div>
