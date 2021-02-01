@@ -22,8 +22,8 @@
     <body>
         <!--TARJETA PRINCIPAL: SE INCLUYE LOGOTIPO Y FORMULARIO-->
         <div id='ventanaLogin'>
-            <!--LOGOTIPO DE LA MARCA: 'NEWZ'-->
-            <figure><img src="../img/logo.png" alt='logo'/></figure>
+            <!--LOGOTIPO DE LA MARCA:-->
+            <figure><a href="./principal.php"><img src="../img/logo.png" alt='logo'/></a></figure>
             
             <!-- FORMULARIO DE REGISTRO DE USUARIO -->
             <form action="#" method="POST" onsubmit="return comprobarRegistro()">

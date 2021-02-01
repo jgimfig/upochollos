@@ -34,7 +34,7 @@ $var = getCupon($_POST['id']);
         <div align="center" id="cupon">
             <form name="fcategoria" method="POST" action="crud.php" onsubmit="return comprobarCupon();">
                 <p>Nombre Cupón:</p>
-                <input type="text" class="ip4" name="cnombre" id="nombre" value= <?php echo "'" . $var[0][1] . "'"; ?> required/>
+                <input type="text" class="ip4" name="cnombre" id="nombreC" value= <?php echo "'" . $var[0][1] . "'"; ?> required/>
                 <p>Código Cupon:</p>
                 <input type="text" class="ip4" name="ccodigo" id="codigo" value= <?php echo "'" . $var[0][2] . "'"; ?> required/>
                 <p>Fecha publicación:</p>
@@ -42,8 +42,8 @@ $var = getCupon($_POST['id']);
                 <p>Fecha vencimiento:</p>
                 <input type="date" name="cFechaVencimiento" id="FechaVencimiento" value=<?php echo "'" . date('Y-m-d', strtotime("+1 week")) . "'"; ?> min=<?php echo "'" . date('Y-m-d') . "'"; ?>/>
                 <p>Descripcion:</p>
-                <input type="text" name="cdescripcion" id="descripcion" class="ip4" value= <?php echo "'" . $var[0][5] . "'"; ?> required/>
-                <input type="hidden" name="cId" id="idCupon" value= <?php echo "'" . $var[0][2] . "'"; ?> />
+                <input type="text" name="cdescripcion" id="descripcionC" class="ip4" value= <?php echo "'" . $var[0][5] . "'"; ?> required/>
+                <input type="hidden" name="cId" id="idCupon" value= <?php echo "'" . $var[0][0] . "'"; ?> />
                 <br><br>
                 <input class="btnProducto2" id="crear" name="btnCrearCupon" type="submit" value="Modificar"/>
             </form>

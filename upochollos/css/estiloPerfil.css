@@ -1,8 +1,8 @@
-.gridC {
+.gridC2 {
     display: grid;
     grid-template-columns: 33% 34% 33%;
     grid-template-rows: 0.1fr;
-    gap: 0px 0px 0px;;
+    gap: 0px 0px 0px;
     grid-template-areas:
         "btnProducto btnChollo btnUser";
 }
@@ -10,6 +10,17 @@
 .btnChollo { grid-area: btnChollo; }
 .btnUser { grid-area: btnUser; }
 
+.gridC {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 0.1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "btnProducto btnChollo";
+}
+.btnProducto { grid-area: btnProducto; }
+.btnChollo { grid-area: btnChollo; }
+.btnUser { grid-area: btnUser; }
 /* Style tab links */
 .tablink {
     background-color: #555;
